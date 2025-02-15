@@ -4,6 +4,7 @@ import { Hero } from "@/components/home/Hero";
 import { AboutSection } from "@/components/home/AboutSection";
 import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
+import { ServiceArea } from "@/components/home/ServiceArea";
 import { ContactForm } from "@/components/common/ContactForm";
 import { LoadingSpinner } from "@/components/common/LoadingSpinner";
 
@@ -39,6 +40,10 @@ export default function Home() {
       />
       <AboutSection businessName={businessData.basic_info.name} />
       <ServicesOverview services={businessData.services} />
+      <ServiceArea 
+        businessName={businessData.basic_info.name}
+        address={businessData.basic_info.address}
+      />
       <ReviewsSection reviews={businessData.reviews} />
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-xl">

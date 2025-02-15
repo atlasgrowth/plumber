@@ -7,6 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
+import { preserveQueryParams } from "@/lib/utils";
 
 interface NavbarProps {
   businessName?: string;
@@ -24,7 +25,7 @@ export function Navbar({ businessName = "Plumbing Services" }: NavbarProps) {
   return (
     <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b z-50">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-primary">
+        <Link href={preserveQueryParams("/")} className="text-xl font-bold text-primary">
           {businessName}
         </Link>
 
@@ -33,7 +34,7 @@ export function Navbar({ businessName = "Plumbing Services" }: NavbarProps) {
           {navItems.map((item) => (
             <Link
               key={item.href}
-              href={item.href}
+              href={preserveQueryParams(item.href)}
               className="text-sm font-medium hover:text-primary transition-colors"
             >
               {item.label}
@@ -54,7 +55,7 @@ export function Navbar({ businessName = "Plumbing Services" }: NavbarProps) {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={preserveQueryParams(item.href)}
                   className="text-lg font-medium"
                   onClick={() => setIsOpen(false)}
                 >
