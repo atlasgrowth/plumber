@@ -43,6 +43,9 @@ export default function Home() {
       <ServiceArea 
         businessName={businessData.basic_info.name}
         address={businessData.basic_info.address}
+        latitude={businessData.basic_info.latitude}
+        longitude={businessData.basic_info.longitude}
+        phone={businessData.basic_info.phone}
       />
       <ReviewsSection reviews={businessData.reviews} />
       <section className="py-16 bg-gray-50">
