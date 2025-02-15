@@ -94,13 +94,12 @@ export function ServiceArea({
 
           <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
             <iframe
-              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBNLrJhOMz6idD05pzfn5lhA-TAw-mAZCU&q=${latitude},${longitude}&zoom=11`}
+              src={`https://www.openstreetmap.org/export/embed.html?bbox=${longitude-0.1},${latitude-0.1},${longitude+0.1},${latitude+0.1}&layer=mapnik&marker=${latitude},${longitude}`}
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
         </div>
