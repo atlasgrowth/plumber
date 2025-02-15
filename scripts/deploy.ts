@@ -9,27 +9,40 @@ if (!token) {
 }
 
 const octokit = new Octokit({ auth: token });
+const repoName = "plumbingtemplate1";
 
 async function deploy() {
   try {
-    // Create repository
-    const { data: repo } = await octokit.repos.createForAuthenticatedUser({
-      name: "plumbingtemplate1",
-      description: "Dynamic React website for plumbing services",
-      private: false,
-      has_issues: true,
-      has_projects: true,
-      has_wiki: true,
-    });
+    let repo;
 
-    console.log("Repository created successfully");
+    try {
+      // Try to get existing repository
+      const { data: existingRepo } = await octokit.repos.get({
+        owner: (await octokit.users.getAuthenticated()).data.login,
+        repo: repoName,
+      });
+      repo = existingRepo;
+      console.log("Using existing repository");
+    } catch (e) {
+      // Create new repository if it doesn't exist
+      const { data: newRepo } = await octokit.repos.createForAuthenticatedUser({
+        name: repoName,
+        description: "Dynamic React website for plumbing services",
+        private: false,
+        has_issues: true,
+        has_projects: true,
+        has_wiki: true,
+      });
+      repo = newRepo;
+      console.log("Repository created successfully");
+    }
 
     // Initialize git and push code
     execSync("git init", { stdio: "inherit" });
     execSync("git add .", { stdio: "inherit" });
     execSync('git commit -m "Initial commit"', { stdio: "inherit" });
-    execSync(`git remote add origin ${repo.clone_url}`, { stdio: "inherit" });
-    execSync("git push -u origin main", { stdio: "inherit" });
+    execSync(`git remote add origin https://${token}@github.com/${repo.owner.login}/${repo.name}.git`, { stdio: "inherit" });
+    execSync("git push -u origin main --force", { stdio: "inherit" });
 
     // Build the site
     execSync("npm run build", { stdio: "inherit" });
@@ -40,7 +53,7 @@ async function deploy() {
       repo: repo.name,
       source: {
         branch: "main",
-        path: "/dist",
+        path: "/",
       },
     });
 
