@@ -66,6 +66,11 @@ async function deploy() {
       fs.renameSync(src, dest);
     });
 
+    // Commit and push the build files
+    execSync("git add index.html assets/", { stdio: "inherit" });
+    execSync('git commit -m "Add built files"', { stdio: "inherit" });
+    execSync("git push", { stdio: "inherit" });
+
     // Update GitHub Pages configuration
     try {
       await octokit.repos.updateInformationAboutPagesSite({
