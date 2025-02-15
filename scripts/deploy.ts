@@ -62,12 +62,12 @@ async function deploy() {
       repo: repo.name,
       source: {
         branch: "main",
-        path: "/",
+        path: "/dist/public",
       },
     });
 
     console.log("GitHub Pages configured successfully");
-    console.log(`Site will be available at: ${repo.html_url}`);
+    console.log(`Site will be available at: https://${repo.owner.login}.github.io/${repo.name}`);
 
   } catch (error) {
     console.error("Deployment failed:", error);
