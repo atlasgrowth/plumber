@@ -41,6 +41,15 @@ async function deploy() {
     execSync("git init", { stdio: "inherit" });
     execSync("git add .", { stdio: "inherit" });
     execSync('git commit -m "Initial commit"', { stdio: "inherit" });
+
+    // Remove existing remote if it exists
+    try {
+      execSync("git remote remove origin", { stdio: "inherit" });
+    } catch (e) {
+      // Ignore error if remote doesn't exist
+    }
+
+    // Add new remote and push
     execSync(`git remote add origin https://${token}@github.com/${repo.owner.login}/${repo.name}.git`, { stdio: "inherit" });
     execSync("git push -u origin main --force", { stdio: "inherit" });
 
