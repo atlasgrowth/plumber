@@ -56,29 +56,66 @@ async function deploy() {
     // Build the site
     execSync("npm run build", { stdio: "inherit" });
 
-    // Move all files from dist/public to root
-    const publicDir = path.join(process.cwd(), "dist", "public");
+    // Create and checkout gh-pages branch
+    try {
+      execSync("git checkout -b gh-pages", { stdio: "inherit" });
+    } catch (e) {
+      execSync("git checkout gh-pages", { stdio: "inherit" });
+    }
+
+    // Clean the root directory except for .git and dist
     const rootDir = process.cwd();
+    fs.readdirSync(rootDir).forEach(file => {
+      if (file !== '.git' && file !== 'dist') {
+        const filePath = path.join(rootDir, file);
+        if (fs.lstatSync(filePath).isDirectory()) {
+          fs.rmSync(filePath, { recursive: true, force: true });
+        } else {
+          fs.unlinkSync(filePath);
+        }
+      }
+    });
+
+    // Copy built files from dist/public to root
+    const publicDir = path.join(process.cwd(), "dist", "public");
+    const copyRecursive = (src: string, dest: string) => {
+      if (fs.lstatSync(src).isDirectory()) {
+        if (!fs.existsSync(dest)) {
+          fs.mkdirSync(dest);
+        }
+        fs.readdirSync(src).forEach(childItemName => {
+          copyRecursive(
+            path.join(src, childItemName),
+            path.join(dest, childItemName)
+          );
+        });
+      } else {
+        fs.copyFileSync(src, dest);
+      }
+    };
 
     fs.readdirSync(publicDir).forEach(file => {
       const src = path.join(publicDir, file);
       const dest = path.join(rootDir, file);
-      fs.renameSync(src, dest);
+      copyRecursive(src, dest);
     });
 
     // Commit and push the build files
-    execSync("git add index.html assets/", { stdio: "inherit" });
-    execSync('git commit -m "Add built files"', { stdio: "inherit" });
-    execSync("git push", { stdio: "inherit" });
+    execSync("git add .", { stdio: "inherit" });
+    execSync('git commit -m "Deploy to GitHub Pages"', { stdio: "inherit" });
+    execSync("git push -u origin gh-pages --force", { stdio: "inherit" });
 
-    // Update GitHub Pages configuration
+    // Switch back to main branch
+    execSync("git checkout main", { stdio: "inherit" });
+
+    // Update GitHub Pages configuration to use gh-pages branch
     try {
       await octokit.repos.updateInformationAboutPagesSite({
         owner: repo.owner.login,
         repo: repo.name,
         source: {
-          branch: "main",
-          path: "/"
+          branch: "gh-pages",
+          path: "/",
         },
       });
     } catch (e) {
@@ -88,8 +125,8 @@ async function deploy() {
         owner: repo.owner.login,
         repo: repo.name,
         source: {
-          branch: "main",
-          path: "/"
+          branch: "gh-pages",
+          path: "/",
         },
       });
     }
