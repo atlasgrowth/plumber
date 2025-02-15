@@ -56,6 +56,16 @@ async function deploy() {
     // Build the site
     execSync("npm run build", { stdio: "inherit" });
 
+    // Move all files from dist/public to root
+    const publicDir = path.join(process.cwd(), "dist", "public");
+    const rootDir = process.cwd();
+
+    fs.readdirSync(publicDir).forEach(file => {
+      const src = path.join(publicDir, file);
+      const dest = path.join(rootDir, file);
+      fs.renameSync(src, dest);
+    });
+
     // Update GitHub Pages configuration
     try {
       await octokit.repos.updateInformationAboutPagesSite({
@@ -63,7 +73,7 @@ async function deploy() {
         repo: repo.name,
         source: {
           branch: "main",
-          path: "dist/public"
+          path: "/"
         },
       });
     } catch (e) {
@@ -74,7 +84,7 @@ async function deploy() {
         repo: repo.name,
         source: {
           branch: "main",
-          path: "dist/public"
+          path: "/"
         },
       });
     }
