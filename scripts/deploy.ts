@@ -56,15 +56,28 @@ async function deploy() {
     // Build the site
     execSync("npm run build", { stdio: "inherit" });
 
-    // Configure GitHub Pages
-    await octokit.repos.createPagesSite({
-      owner: repo.owner.login,
-      repo: repo.name,
-      source: {
-        branch: "main",
-        path: "/dist/public",
-      },
-    });
+    // Update GitHub Pages configuration
+    try {
+      await octokit.repos.updateInformationAboutPagesSite({
+        owner: repo.owner.login,
+        repo: repo.name,
+        source: {
+          branch: "main",
+          path: "dist/public"
+        },
+      });
+    } catch (e) {
+      console.log("Pages already configured, updating source...");
+      // If updating fails, try to create
+      await octokit.repos.createPagesSite({
+        owner: repo.owner.login,
+        repo: repo.name,
+        source: {
+          branch: "main",
+          path: "dist/public"
+        },
+      });
+    }
 
     console.log("GitHub Pages configured successfully");
     console.log(`Site will be available at: https://${repo.owner.login}.github.io/${repo.name}`);
