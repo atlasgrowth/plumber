@@ -1,13 +1,10 @@
-
-import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 
 interface Review {
+  author: string;
+  rating: number;
   text: string;
-  reviewer_name: string;
-  date: string;
 }
 
 interface ReviewsSectionProps {
@@ -15,112 +12,47 @@ interface ReviewsSectionProps {
 }
 
 export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (reviews.length > 0) {
-      const timer = setInterval(() => {
-        setCurrentIndex((prevIndex) => 
-          prevIndex === reviews.length - 1 ? 0 : prevIndex + 1
-        );
-      }, 5000);
-      return () => clearInterval(timer);
+  const defaultReviews = [
+    {
+      author: "John D.",
+      rating: 5,
+      text: "Excellent service! Very professional and prompt."
+    },
+    {
+      author: "Sarah M.",
+      rating: 5,
+      text: "Great experience from start to finish. Highly recommend!"
     }
-  }, [reviews.length]);
+  ];
 
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? reviews.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === reviews.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  if (!reviews || reviews.length === 0) {
-    return null;
-  }
+  const displayReviews = reviews.length ? reviews : defaultReviews;
 
   return (
-    <div className="bg-gradient-to-b from-primary/5 to-background py-16">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Customer Testimonials</h2>
-          <div className="flex flex-col items-center gap-2">
-            <div className="flex justify-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
-            {reviews.length > 0 && (
-              <p className="text-lg text-gray-600">
-                Based on {reviews.length} reviews
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto">
-          <Button 
-            variant="ghost" 
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10"
-            onClick={handlePrevious}
-          >
-            <ChevronLeft className="h-8 w-8" />
-          </Button>
-
-          <Button 
-            variant="ghost" 
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10"
-            onClick={handleNext}
-          >
-            <ChevronRight className="h-8 w-8" />
-          </Button>
-
-          <div className="overflow-hidden relative min-h-[300px]">
-            {reviews.map((review, index) => (
-              <div
-                key={index}
-                className={`absolute w-full transition-all duration-500 ease-in-out ${
-                  index === currentIndex 
-                    ? 'opacity-100 translate-x-0' 
-                    : 'opacity-0 translate-x-full'
-                }`}
-              >
-                <Card className="bg-white/50 backdrop-blur-sm">
-                  <CardContent className="p-8 text-center">
-                    <Quote className="h-8 w-8 text-primary/20 mb-4 mx-auto" />
-                    <p className="text-lg mb-6">{review.text}</p>
-                    <div className="flex flex-col items-center">
-                      <p className="font-semibold text-lg">{review.reviewer_name}</p>
-                      <p className="text-sm text-gray-500">
-                        {new Date(review.date).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex justify-center mt-6 gap-2">
-            {reviews.map((_, index) => (
-              <button
-                key={index}
-                className={`h-2 w-2 rounded-full transition-all ${
-                  index === currentIndex ? 'bg-primary w-4' : 'bg-gray-300'
-                }`}
-                onClick={() => setCurrentIndex(index)}
-              />
-            ))}
-          </div>
+        <h2 className="text-3xl font-bold text-center mb-12">
+          What Our Customers Say
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {displayReviews.map((review, index) => (
+            <Card key={index}>
+              <CardContent className="pt-6">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                    />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4">{review.text}</p>
+                <p className="font-semibold">{review.author}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default ReviewsSection;
