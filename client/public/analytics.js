@@ -57,7 +57,7 @@ document.addEventListener('click', (e) => {
 function sendAnalytics() {
   const duration = Math.floor((Date.now() - sessionData.startTime) / 1000);
   
-  fetch('https://68b567d0-2dff-4889-a730-3be8bf5583f5-00-2ld48qpl02xwb.worf.replit.dev/api/businesses/' + sessionData.siteId + '/visits', {
+  fetch('/api/analytics', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
