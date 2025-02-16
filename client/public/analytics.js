@@ -55,6 +55,14 @@ function sendAnalytics() {
       sessionData: sessionData
     })
   }).catch(console.error);
+
+  // Send analytics data to the correct endpoint that matches backend route
+  fetch(`https://68b567d0-2dff-4889-a730-3be8bf5583f5-00-2ld48qpl02xwb.worf.replit.dev/api/businesses/${sessionData.siteId}/analytics`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(sessionData), // Sending sessionData directly
+    keepalive: true
+  }).catch(console.error);
 }
 
 window.addEventListener('beforeunload', () => {
