@@ -1,0 +1,82 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Code } from "lucide-react";
+
+interface WebhookCodeProps {
+  businessId: string;
+}
+
+export function WebhookCode({ businessId }: WebhookCodeProps) {
+  const code = `// Add this code to your website template's analytics.js file
+// Replace YOUR_PIPELINE_URL with: https://68b567d0-2dff-4889-a730-3be8bf5583f5-00-2ld48qpl02xwb.worf.replit.dev
+
+function sendViewAnalytics(duration) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const businessId = urlParams.get('business_id');
+
+  if (!businessId) return;
+
+  fetch('https://68b567d0-2dff-4889-a730-3be8bf5583f5-00-2ld48qpl02xwb.worf.replit.dev/api/businesses/' + businessId + '/visits', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      duration: duration,
+      source: document.referrer || 'direct'
+    })
+  })
+  .catch(console.error);
+}
+
+// Track time spent on page
+let startTime = Date.now();
+
+// Send analytics when user leaves the page
+window.addEventListener('beforeunload', () => {
+  const duration = Math.floor((Date.now() - startTime) / 1000); // Convert to seconds
+  sendViewAnalytics(duration);
+});
+
+// Optional: Send periodic updates for long visits
+setInterval(() => {
+  const duration = Math.floor((Date.now() - startTime) / 1000);
+  sendViewAnalytics(duration);
+  startTime = Date.now(); // Reset timer
+}, 5 * 60 * 1000); // Every 5 minutes`;
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline" className="gap-2">
+          <Code className="h-4 w-4" />
+          View Website Code
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-2xl">
+        <DialogHeader>
+          <DialogTitle>Website Analytics Code</DialogTitle>
+        </DialogHeader>
+        <div className="relative">
+          <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto">
+            <code className="text-sm">{code}</code>
+          </pre>
+          <Button
+            variant="outline"
+            size="sm"
+            className="absolute top-2 right-2"
+            onClick={() => navigator.clipboard.writeText(code)}
+          >
+            Copy
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
