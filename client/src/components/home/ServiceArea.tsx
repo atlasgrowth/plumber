@@ -1,5 +1,7 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Clock, Phone } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 interface ServiceAreaProps {
   businessName: string;
@@ -16,31 +18,71 @@ export function ServiceArea({
   longitude = -92.38043,
   phone
 }: ServiceAreaProps) {
-  const nearbyCities = [
-    {
-      name: "Little Rock",
-      distance: "Within 30 miles"
-    },
-    {
-      name: "North Little Rock",
-      distance: "Within 35 miles"
-    },
-    {
-      name: "Conway",
-      distance: "Within 25 miles"
-    },
-    {
-      name: "Benton",
-      distance: "Within 40 miles"
-    },
-    {
-      name: "Bryant",
-      distance: "Within 45 miles"
-    },
-    {
-      name: "Jacksonville",
-      distance: "Within 35 miles"
-    }
+  const mapRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    // Load Google Maps
+    const loadMap = () => {
+      if (window.google && mapRef.current) {
+        const map = new google.maps.Map(mapRef.current, {
+          center: { lat: latitude, lng: longitude },
+          zoom: 10,
+          styles: [
+            {
+              featureType: "water",
+              elementType: "geometry",
+              stylers: [{ color: "#e9e9e9" }]
+            },
+            {
+              featureType: "landscape",
+              elementType: "geometry",
+              stylers: [{ color: "#f5f5f5" }]
+            }
+          ]
+        });
+
+        // Add business marker
+        new google.maps.Marker({
+          position: { lat: latitude, lng: longitude },
+          map,
+          title: businessName,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: "#2563eb",
+            fillOpacity: 1,
+            strokeWeight: 0,
+            scale: 10,
+          }
+        });
+
+        // Add service area circle
+        new google.maps.Circle({
+          center: { lat: latitude, lng: longitude },
+          radius: 40233.6, // 25 miles in meters
+          map,
+          fillColor: "#2563eb",
+          fillOpacity: 0.1,
+          strokeColor: "#2563eb",
+          strokeWeight: 2
+        });
+      }
+    };
+
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}`;
+    script.async = true;
+    script.defer = true;
+    script.onload = loadMap;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [latitude, longitude, businessName]);
+
+  const serviceLocations = [
+    { name: "Primary Service Area", distance: "Within 15 miles" },
+    { name: "Extended Service Area", distance: "15-25 miles" }
   ];
 
   return (
@@ -77,12 +119,12 @@ export function ServiceArea({
                 <div className="flex items-start gap-4">
                   <Clock className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="text-xl font-semibold mb-4">Areas We Serve</h3>
-                    <div className="grid grid-cols-2 gap-4">
-                      {nearbyCities.map((city) => (
-                        <div key={city.name} className="flex flex-col">
-                          <span className="font-medium">{city.name}</span>
-                          <span className="text-sm text-gray-500">{city.distance}</span>
+                    <h3 className="text-xl font-semibold mb-4">Service Coverage</h3>
+                    <div className="space-y-4">
+                      {serviceLocations.map((location) => (
+                        <div key={location.name} className="flex flex-col">
+                          <span className="font-medium">{location.name}</span>
+                          <span className="text-sm text-gray-500">{location.distance}</span>
                         </div>
                       ))}
                     </div>
@@ -92,16 +134,7 @@ export function ServiceArea({
             </Card>
           </div>
 
-          <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
-            <iframe
-              src={`https://www.openstreetmap.org/export/embed.html?bbox=${longitude-0.1},${latitude-0.1},${longitude+0.1},${latitude+0.1}&layer=mapnik&marker=${latitude},${longitude}`}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
-          </div>
+          <div ref={mapRef} className="aspect-square md:aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg min-h-[400px]" />
         </div>
       </div>
     </section>
