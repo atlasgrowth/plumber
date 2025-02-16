@@ -17,7 +17,7 @@ const titleVariations = [
 
 export function Hero({ businessName, phone, city, is24_7 }: HeroProps) {
   const randomTitle = titleVariations[Math.floor(Math.random() * titleVariations.length)];
-  const locationText = city ? `in ${city}` : "Your Local Plumber";
+  const locationText = city ? `in ${city}, Arkansas` : "Professional Plumbing Services";
 
   return (
     <div className="relative bg-gradient-to-b from-primary/5 to-background min-h-[600px] flex items-center">
