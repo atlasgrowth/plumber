@@ -1,0 +1,316 @@
+{
+  "ids": {
+    "site_id": "allcallsplumbing",
+    "place_id": "ChIJRau1Ub8QyYcRR0_meilKIHE",
+    "google_id": "0x87c910bf51b5ab45:0x71204a297ae64f47",
+    "owner_id": 100684364681527362548
+  },
+  "basic_info": {
+    "name": "All Calls Plumbing",
+    "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJRau1Ub8QyYcRR0_meilKIHE&q=plumber,+72575,+Salado,+AR,+US&authuser=0&hl=en&gl=US",
+    "phone": "+1 479-544-3331",
+    "query": "plumber, 72575, Salado, AR, US",
+    "name_for_emails": "All Calls Plumbing",
+    "site": "",
+    "subtypes": "Plumber, Service establishment",
+    "category": "Plumber",
+    "type": "Plumber",
+    "phone.phones_enricher.carrier_type": "mobile",
+    "phone.phones_enricher.carrier_name": "NEW CINGULAR WIRELESS PCS, LLC - IL",
+    "full_address": "",
+    "borough": "",
+    "street": "",
+    "city": "",
+    "postal_code": "",
+    "state": "",
+    "us_state": "",
+    "country": "",
+    "country_code": "",
+    "latitude": 36.3779579,
+    "longitude": -94.216675,
+    "h3": "8926ed5509bffff",
+    "time_zone": "America/Chicago",
+    "plus_code": "",
+    "area_service": "TRUE",
+    "rating": 4.5,
+    "reviews": 35,
+    "reviews_tags": "",
+    "reviews_per_score": "",
+    "photos_count": 88,
+    "photo": "https://lh5.googleusercontent.com/p/AF1QipOh3f3pE9YlQmdahk7-KMNuAIvP6QFpavd7J-oY=w800-h500-k-no",
+    "street_view": "https://lh5.googleusercontent.com/p/AF1QipOh3f3pE9YlQmdahk7-KMNuAIvP6QFpavd7J-oY=w1600-h1000-k-no",
+    "located_in": "",
+    "working_hours": "{\"Monday\": \"7AM-5PM\", \"Tuesday\": \"7AM-5PM\", \"Wednesday\": \"7AM-5PM\", \"Thursday\": \"7AM-5PM\", \"Friday\": \"7AM-5PM\", \"Saturday\": \"7AM-12PM\", \"Sunday\": \"Closed\"}",
+    "working_hours_old_format": "Monday:7AM-5PM|Tuesday:7AM-5PM|Wednesday:7AM-5PM|Thursday:7AM-5PM|Friday:7AM-5PM|Saturday:7AM-12PM|Sunday:Closed",
+    "other_hours": "",
+    "popular_times": "",
+    "business_status": "OPERATIONAL",
+    "about": "{\"Payments\": {\"Credit cards\": true}}",
+    "range": "",
+    "posts": "",
+    "logo": "https://lh4.googleusercontent.com/-CYC3EDKavUw/AAAAAAAAAAI/AAAAAAAAAAA/nCWlOFahQSU/s44-p-k-no-ns-nd/photo.jpg",
+    "description": "",
+    "typical_time_spent": "",
+    "verified": "TRUE",
+    "owner_id": 100684364681527362548,
+    "owner_title": "All Calls Plumbing",
+    "owner_link": "https://www.google.com/maps/contrib/100684364681527362548",
+    "reservation_links": "",
+    "booking_appointment_link": "",
+    "menu_link": "",
+    "order_links": "",
+    "location_link": "https://www.google.com/maps/place/All+Calls+Plumbing/@36.3779579,-94.216675,14z/data=!4m8!1m2!2m1!1sAll+Calls+Plumbing!3m4!1s0x87c910bf51b5ab45:0x71204a297ae64f47!8m2!3d36.3779579!4d-94.216675",
+    "location_reviews_link": "https://www.google.com/maps/place/All+Calls+Plumbing/@36.3779579,-94.216675,13.99z/data=!4m16!1m7!3m6!1s0x87c910bf51b5ab45:0x71204a297ae64f47!2sAll+Calls+Plumbing!8m2!3d36.3779579!4d-94.216675!16s%2Fg%2F11ckvg1dmb!3m7!1s0x87c910bf51b5ab45:0x71204a297ae64f47!8m2!3d36.3779579!4d-94.216675!9m1!1b1!16s%2Fg%2F11ckvg1dmb?entry=ttu",
+    "place_id": "ChIJRau1Ub8QyYcRR0_meilKIHE",
+    "google_id": "0x87c910bf51b5ab45:0x71204a297ae64f47",
+    "cid": 8151596867556626247,
+    "reviews_id": 8151596867556626247,
+    "located_google_id": "",
+    "email_1": "allcallsplumbing@cox.net",
+    "email_1.emails_validator.status": "RECEIVING",
+    "email_1.emails_validator.status_details": "SMTP validated",
+    "email_1_full_name": "",
+    "email_1_first_name": "",
+    "email_1_last_name": "",
+    "email_1_title": "",
+    "email_1_phone": "",
+    "email_2": "",
+    "email_2.emails_validator.status": "",
+    "email_2.emails_validator.status_details": "",
+    "email_2_full_name": "",
+    "email_2_first_name": "",
+    "email_2_last_name": "",
+    "email_2_title": "",
+    "email_2_phone": "",
+    "email_3": "",
+    "email_3.emails_validator.status": "",
+    "email_3.emails_validator.status_details": "",
+    "email_3_full_name": "",
+    "email_3_first_name": "",
+    "email_3_last_name": "",
+    "email_3_title": "",
+    "email_3_phone": "",
+    "phone_1": 14795443331,
+    "phone_1.phones_enricher.carrier_type": "mobile",
+    "phone_1.phones_enricher.carrier_name": "NEW CINGULAR WIRELESS PCS, LLC - IL",
+    "phone_2": "",
+    "phone_3": "",
+    "facebook": "https://www.facebook.com/people/All-Calls-Plumbing/100063746825046/",
+    "instagram": "",
+    "linkedin": "",
+    "tiktok": "",
+    "medium": "",
+    "reddit": "",
+    "skype": "",
+    "snapchat": "",
+    "telegram": "",
+    "whatsapp": "",
+    "twitter": "",
+    "vimeo": "",
+    "youtube": "",
+    "github": "",
+    "crunchbase": "",
+    "website_title": "",
+    "website_generator": "",
+    "website_description": "",
+    "website_keywords": "",
+    "website_has_fb_pixel": "",
+    "website_has_google_tag": ""
+  },
+  "review_trends": {
+    "monthly_reviews": {
+      "2024-05": 3.0,
+      "2024-06": 1.0,
+      "2020-02": 1.0,
+      "2020-06": 6.0,
+      "2020-12": 1.0,
+      "2023-09": 1.0,
+      "2023-10": 1.0,
+      "2021-02": 1.0,
+      "2018-10": 1.0,
+      "2019-05": 1.0,
+      "2018-11": 1.0,
+      "2018-12": 1.0,
+      "2019-07": 1.0,
+      "2022-01": 1.0,
+      "2023-05": 1.0,
+      "2024-02": 1.0,
+      "2019-03": 1.0,
+      "2017-09": 1.0,
+      "2017-10": 1.0,
+      "2017-11": 1.0,
+      "2019-02": 1.0,
+      "2019-06": 1.0,
+      "2020-09": 1.0,
+      "2020-10": 1.0,
+      "2021-01": 1.0,
+      "2018-09": 1.0,
+      "2020-08": 1.0,
+      "2018-06": 1.0
+    },
+    "yearly_totals": {},
+    "total_reviews": 35,
+    "owner_responses": 0
+  },
+  "scores": {
+    "photo_score": 0,
+    "facebook_score": 0
+  },
+  "five_star_reviews": [
+    {
+      "text": "They are friendly and can get to you in a timely manner. Always cleans up before they leave! I\u2019d use them again.",
+      "reviewer_name": "Robin McCall",
+      "date": "2025-02-12T18:34:24.719Z"
+    },
+    {
+      "text": "Answered the phone immediately. The owner was here the next day. He plumbed a bath tub within 2 hours. We\u2019ve used them before and will again.",
+      "reviewer_name": "Robyn Jamison",
+      "date": "2024-06-01T17:09:39.507Z"
+    },
+    {
+      "text": "David has been great for projects large and small and we will continue to rely on his professionalism and quality work for all future plumbing needs. Highly recommend if you are looking for a high quality plumbing service.",
+      "reviewer_name": "Jason Kuilan",
+      "date": "2024-05-30T20:19:52.509Z"
+    },
+    {
+      "text": null,
+      "reviewer_name": "jon belvin",
+      "date": "2024-05-29T16:25:55.452Z"
+    },
+    {
+      "text": "I\u2019m a repeat customer, and trust All Calls for all my plumbing problems big or small. Friendly, ethical, and expert service every time. I won\u2019t call anyone else.",
+      "reviewer_name": "Jon Allen",
+      "date": "2024-05-29T15:18:07.148Z"
+    },
+    {
+      "text": "All Calls has done a variety of work for us including repairing a collapsed sewer line, installing a water heater, and running lines for a utility sink. In every case they explained what was needed and the price upfront, and did a great job. Highly recommended.",
+      "reviewer_name": "Scott Ehardt",
+      "date": "2024-02-03T01:23:44.383Z"
+    },
+    {
+      "text": "Had a water leak that David found and repaired. Watching David make pipe for what he needed was awesome, it was like his hands were the tools. I could tell he was very experienced and very knowledgeable. He completed the job in a timely manner as possible for where the leak was located. I would definitely use him again if the need arose.",
+      "reviewer_name": "Constance",
+      "date": "2023-09-12T14:09:21.841Z"
+    },
+    {
+      "text": null,
+      "reviewer_name": "james gilmore",
+      "date": "2023-05-01T21:03:58.663Z"
+    },
+    {
+      "text": "We called everywhere for an emergency when our sewer pump alarm went off. They were the first who answered and I am so glad they did! They were out about 2 hours later, professional, reasonably priced, and helped us understand and fix the issue at hand. We will be using them later this year for more plumbing needs! Fantastic service that we will recommend to anyone!",
+      "reviewer_name": "Kristina Wallace",
+      "date": "2021-02-13T17:31:21.987Z"
+    },
+    {
+      "text": "David and crew fixed a under the slab water leak, stayed with the job until complete, and kept me informed on all the work being done. I appreciate the the honesty, expertise, and very reasonable price for the work. Highly recommended.",
+      "reviewer_name": "Gary S",
+      "date": "2021-01-16T16:57:03.739Z"
+    },
+    {
+      "text": "I had the main water line from the city meter break and called All Calls.  They were able to come up next day and make the repairs.  David was kind enough to take a follow up call to help me out on gauging the water pressure to my home to ensure it was correct.  Professional, on time and quality work!  Nice to have contractors you can trust.",
+      "reviewer_name": "Todd Womble",
+      "date": "2020-12-22T22:55:57.556Z"
+    },
+    {
+      "text": "My toilet wasn't flushing very well.  I checked everything that I could.  So, I called All Calls Plumbing to see what the problems was.  They were very professional, respectful,.  David and Lain made me feel very comfortable.   David explained things in detail and to my understanding.  Did a great job!!  Prices are  very reasonable  I would highly recommend All Calls Plumbing.  Thank you for your excellent service David and Lain!!",
+      "reviewer_name": "N L",
+      "date": "2020-10-15T19:30:40.815Z"
+    },
+    {
+      "text": "This is my \u201cgo-to\u201d plumbing choice for any type plumbing service.  The prices are reasonable and the service of high quality.\n\nDavid is the most competent plumber possible.  He focuses on the job and completes in a timely fashion\n\nHe is my plumber!!!",
+      "reviewer_name": "David",
+      "date": "2020-09-02T16:13:38.863Z"
+    },
+    {
+      "text": "Great company. They were able to get to us when others did not commit. We would ask for help again.",
+      "reviewer_name": "Shawn Kohltfarber",
+      "date": "2020-08-26T11:24:38.662Z"
+    },
+    {
+      "text": "Very knowledgeable & reasonably priced - will definitely continue to use in the future!",
+      "reviewer_name": "Ryan Lukis",
+      "date": "2020-06-05T14:25:52.885Z"
+    },
+    {
+      "text": null,
+      "reviewer_name": "Kaitlyn Harris",
+      "date": "2020-06-05T14:21:39.322Z"
+    },
+    {
+      "text": "My husband and I had a water leak in our new home. We called All Calls plumbing to get a quote and proceeded with their business. We are very happy with their service and efficient work. All complete in a day! Highly recommend.",
+      "reviewer_name": "Hannah Edwards",
+      "date": "2020-06-05T14:18:43.356Z"
+    },
+    {
+      "text": null,
+      "reviewer_name": "Presley Covington",
+      "date": "2020-06-05T14:11:17.466Z"
+    },
+    {
+      "text": null,
+      "reviewer_name": "Kaylee Lamproe",
+      "date": "2020-06-05T14:02:59.304Z"
+    },
+    {
+      "text": "They know their stuff and always take time to explain what the problem is and what the next step is. Always costs more then I'd like, but that's how home repair goes \ud83d\ude2d",
+      "reviewer_name": "Crystal Herzig",
+      "date": "2019-07-05T22:57:36.831Z"
+    },
+    {
+      "text": "Just exceptional work, courtesy and punctuality. All Calls is the only one i will use for all of my plumbing needs.",
+      "reviewer_name": "Oscar Martinez",
+      "date": "2019-06-21T18:25:30.481Z"
+    },
+    {
+      "text": "Great service, quick, and reasonable price.",
+      "reviewer_name": "DL",
+      "date": "2019-05-13T16:38:03.741Z"
+    },
+    {
+      "text": "David was every knowledgeable. Hard working and pleasant to talk to. He put everything back as it was. And will call him for any plumbing problems. HIGHLY recommended. Thanks",
+      "reviewer_name": "Steven Lazaroe",
+      "date": "2019-03-08T21:58:14.477Z"
+    },
+    {
+      "text": "David is efficient and very knowledgeable. Will definitely use him again when I need a plumber!",
+      "reviewer_name": "BETH CLEM",
+      "date": "2019-02-27T17:17:17.401Z"
+    },
+    {
+      "text": "Had a main line clog. Quick, informative, very professional. Joey and Lane did a great job.",
+      "reviewer_name": "Beau Mott",
+      "date": "2018-12-20T02:40:05.399Z"
+    },
+    {
+      "text": "They were wonderful they got it fixed really fast and were very knowledgeable about their jobs.   I highly recommend them and if I have any plumbing problems in the future I will be calling them.",
+      "reviewer_name": "Kimberly Wise",
+      "date": "2018-10-30T21:23:21.237Z"
+    },
+    {
+      "text": null,
+      "reviewer_name": "Rob Husted",
+      "date": "2018-09-16T22:45:53.294Z"
+    },
+    {
+      "text": "I normally don\u2019t post reviews but i received such great service I had to.   David and his team were professional yet personable and saved me big bucks on a tankless water heater.  Won\u2019t go anywhere else.",
+      "reviewer_name": "Edward Carlton",
+      "date": "2018-06-18T23:31:57.563Z"
+    },
+    {
+      "text": "We just bought our first home. Come to find out that our main drain/sewage line was totally torn up. Thankfully, ACP were able to come out promptly and diagnose the issue. They quickly returned within the week and put in a brand new line for us. They are so wonderful and we are very thankful to have found them. They know what they are doing and are good to their word. I highly recommend them for any plumbing needs.",
+      "reviewer_name": "Emily Upton",
+      "date": "2017-11-17T23:44:12.406Z"
+    },
+    {
+      "text": "My kitchen sink water was barely trickling out, I had no idea what was wrong.  I called and someone came out the next day and fixed the problem along with making sure the job was done right.  He cleaned up any mess and was super friendly and knowledgeable.  I would definitely use them again for future problems.  Also, he didn't over charge me and tried to find ways to keep the cost at a minimum.  Thank you!!",
+      "reviewer_name": "Carol Shipman",
+      "date": "2017-10-30T14:53:33.693Z"
+    },
+    {
+      "text": null,
+      "reviewer_name": "Geneva Lamproe",
+      "date": "2017-09-25T15:16:56.681Z"
+    }
+  ]
+}
