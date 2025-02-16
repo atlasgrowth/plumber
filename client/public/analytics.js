@@ -1,11 +1,3 @@
-
-// Analytics code for your website
-
-function getSiteIdFromUrl() {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get('site_id');
-}
-
 function collectDeviceInfo() {
   return {
     browser: navigator.userAgent,
@@ -18,7 +10,7 @@ function collectDeviceInfo() {
 }
 
 let sessionData = {
-  siteId: getSiteIdFromUrl(),
+  siteId: new URLSearchParams(window.location.search).get('site_id'),
   startTime: Date.now(),
   lastActive: Date.now(),
   deviceInfo: collectDeviceInfo(),
@@ -27,25 +19,24 @@ let sessionData = {
   navigationPath: [window.location.pathname]
 };
 
-// Track page views
 function recordPageView() {
+  const scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
   sessionData.pageViews.push({
     path: window.location.pathname,
     timestamp: Date.now(),
     timeSpent: Date.now() - sessionData.lastActive,
-    scrollDepth: (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100,
+    scrollDepth,
     deviceInfo: sessionData.deviceInfo,
     location: { country: '', region: '' }
   });
 }
 
-// Track clicks
 document.addEventListener('click', (e) => {
   sessionData.clicks.push({
     path: window.location.pathname,
     timestamp: Date.now(),
-    elementId: e.target.id,
-    elementText: e.target.textContent,
+    elementId: e.target.id || '',
+    elementText: e.target.textContent || '',
     position: {
       x: e.clientX,
       y: e.clientY
@@ -53,31 +44,24 @@ document.addEventListener('click', (e) => {
   });
 });
 
-// Send data to pipeline
 function sendAnalytics() {
   const duration = Math.floor((Date.now() - sessionData.startTime) / 1000);
-  
-  fetch('/api/analytics', {
+  fetch('https://68b567d0-2dff-4889-a730-3be8bf5583f5-00-2ld48qpl02xwb.worf.replit.dev/api/businesses/' + sessionData.siteId + '/visits', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       duration: duration,
       source: document.referrer || 'direct',
       sessionData: sessionData
     })
-  })
-  .catch(console.error);
+  }).catch(console.error);
 }
 
-// Send analytics when user leaves
 window.addEventListener('beforeunload', () => {
   recordPageView();
   sendAnalytics();
 });
 
-// Periodic updates
 setInterval(() => {
   recordPageView();
   sendAnalytics();
