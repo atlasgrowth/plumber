@@ -21,15 +21,23 @@ let sessionData = {
 
 function recordPageView() {
   const scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+  const currentTime = Date.now();
+  const timeSpent = currentTime - sessionData.lastActive;
+  
   sessionData.pageViews.push({
     path: window.location.pathname,
-    timestamp: Date.now(),
-    timeSpent: Date.now() - sessionData.lastActive,
-    scrollDepth,
+    timestamp: currentTime,
+    timeSpent: timeSpent,
+    scrollDepth: scrollDepth,
     deviceInfo: sessionData.deviceInfo,
-    location: { country: '', region: '' }
+    location: sessionData.locationInfo || { country: '', region: '' }
   });
+  
+  sessionData.lastActive = currentTime;
 }
+
+// Record initial page view
+recordPageView();
 
 document.addEventListener('click', (e) => {
   sessionData.clicks.push({
