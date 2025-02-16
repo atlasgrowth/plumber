@@ -18,15 +18,21 @@ export function ServicesOverview({ services = [], businessName = "" }: ServicesO
   const defaultServices = [
     {
       title: "Residential Services",
-      description: `Trust ${businessName} for all your home plumbing needs. From quick repairs to complete installations, our expert team delivers reliable solutions that keep your household running smoothly. We handle everything from leaky faucets to water heater replacements with the same level of dedication and professionalism.`,
+      description: `Trust ${businessName} for all your home plumbing needs. From quick repairs to complete installations, our expert team delivers reliable solutions that keep your household running smoothly.`,
       image: "https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?auto=format&fit=crop&q=80&w=600",
       link: "/residential"
     },
     {
       title: "Commercial Services",
-      description: `${businessName} provides comprehensive commercial plumbing solutions that keep your business operating at peak efficiency. Our experienced team understands the unique challenges of commercial plumbing systems and delivers fast, reliable service to minimize any disruption to your operations.`,
+      description: `${businessName} provides comprehensive commercial plumbing solutions that keep your business operating at peak efficiency. Our experienced team understands the unique challenges of commercial plumbing systems.`,
       image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=600",
       link: "/commercial"
+    },
+    {
+      title: "Emergency Services",
+      description: `Available 24/7 for your urgent plumbing needs. When disaster strikes, ${businessName} is ready to respond with immediate solutions to protect your property and restore your peace of mind.`,
+      image: "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&q=80&w=600",
+      link: "/residential#emergency"
     }
   ];
 
