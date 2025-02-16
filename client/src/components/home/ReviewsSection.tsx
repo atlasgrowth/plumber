@@ -4,32 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 interface Review {
+  author: string;
+  rating: number;
   text: string;
-  reviewer_name: string;
-  date: string;
 }
 
-// Make sure to export the component as a named export
-export function ReviewsSection() {
+interface ReviewsSectionProps {
+  reviews?: Review[];
+}
+
+export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadReviews = async () => {
-      try {
-        const response = await window.fs.readFile('paste.txt', { encoding: 'utf8' });
-        const data = JSON.parse(response);
-        setReviews(data.five_star_reviews);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error loading reviews:', error);
-        setIsLoading(false);
-      }
-    };
-
-    loadReviews();
-  }, []);
 
   useEffect(() => {
     if (reviews.length > 0) {
@@ -54,12 +39,8 @@ export function ReviewsSection() {
     );
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-96">
-        <div className="text-xl">Loading reviews...</div>
-      </div>
-    );
+  if (reviews.length === 0) {
+    return null;
   }
 
   return (
@@ -113,10 +94,7 @@ export function ReviewsSection() {
                     <Quote className="h-8 w-8 text-primary/20 mb-4" />
                     <p className="text-lg mb-6">{review.text}</p>
                     <div className="flex flex-col items-center">
-                      <p className="font-semibold text-lg mb-2">{review.reviewer_name}</p>
-                      <p className="text-sm text-gray-500">
-                        {new Date(review.date).toLocaleDateString()}
-                      </p>
+                      <p className="font-semibold text-lg mb-2">{review.author}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -141,5 +119,4 @@ export function ReviewsSection() {
   );
 }
 
-// Also add a default export
 export default ReviewsSection;
