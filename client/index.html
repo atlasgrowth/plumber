@@ -30,7 +30,7 @@
       // Send data when user leaves
       window.addEventListener('beforeunload', async () => {
         try {
-          await fetch('https://bbd5027a-f3b6-48cb-b2e3-7c31fdf9c394-00-1a4b9g7vepksy.janeway.replit.dev/api/businesses/' + siteId + '/visits', {
+          await fetch('https://e1ad1fcb-e0d6-4975-9d66-21666cc89433-00-edqcrzbbmbuj.riker.replit.dev/'/api/businesses/' + siteId + '/visits', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -39,7 +39,7 @@
             })
           });
 
-          await fetch('https://bbd5027a-f3b6-48cb-b2e3-7c31fdf9c394-00-1a4b9g7vepksy.janeway.replit.dev/api/businesses/' + siteId + '/analytics', {
+          await fetch('https://e1ad1fcb-e0d6-4975-9d66-21666cc89433-00-edqcrzbbmbuj.riker.replit.dev/'/api/businesses/' + siteId + '/analytics', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(SESSION)
