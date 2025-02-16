@@ -8,18 +8,18 @@ export function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <div className="flex flex-col gap-2">
-              <Link href="/">
-                <a className="hover:text-primary transition-colors">Home</a>
+              <Link href="/" className="hover:text-primary transition-colors">
+                Home
               </Link>
-              <Link href="/residential">
-                <a className="hover:text-primary transition-colors">Residential Services</a>
+              <Link href="/residential" className="hover:text-primary transition-colors">
+                Residential Services
               </Link>
-              <Link href="/commercial">
-                <a className="hover:text-primary transition-colors">Commercial Services</a>
+              <Link href="/commercial" className="hover:text-primary transition-colors">
+                Commercial Services
               </Link>
             </div>
           </div>
-          
+
           <div>
             <h3 className="font-bold text-lg mb-4">Services</h3>
             <div className="flex flex-col gap-2">
@@ -39,7 +39,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-8 pt-8 border-t text-center text-sm text-gray-500">
           <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
         </div>
