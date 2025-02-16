@@ -9,27 +9,12 @@ interface Review {
   date: string;
 }
 
-// Make sure to export the component as a named export
-export function ReviewsSection() {
+interface ReviewsSectionProps {
+  reviews?: Review[];
+}
+
+export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadReviews = async () => {
-      try {
-        const response = await window.fs.readFile('paste.txt', { encoding: 'utf8' });
-        const data = JSON.parse(response);
-        setReviews(data.five_star_reviews);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error loading reviews:', error);
-        setIsLoading(false);
-      }
-    };
-
-    loadReviews();
-  }, []);
 
   useEffect(() => {
     if (reviews.length > 0) {
@@ -54,12 +39,8 @@ export function ReviewsSection() {
     );
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-96">
-        <div className="text-xl">Loading reviews...</div>
-      </div>
-    );
+  if (reviews.length === 0) {
+    return null;
   }
 
   return (
@@ -140,6 +121,3 @@ export function ReviewsSection() {
     </div>
   );
 }
-
-// Also add a default export
-export default ReviewsSection;
