@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 interface Review {
+  author: string;
+  rating: number;
   text: string;
-  reviewer_name: string;
-  date: string;
 }
 
 interface ReviewsSectionProps {
@@ -94,10 +94,7 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
                     <Quote className="h-8 w-8 text-primary/20 mb-4" />
                     <p className="text-lg mb-6">{review.text}</p>
                     <div className="flex flex-col items-center">
-                      <p className="font-semibold text-lg mb-2">{review.reviewer_name}</p>
-                      <p className="text-sm text-gray-500">
-                        {new Date(review.date).toLocaleDateString()}
-                      </p>
+                      <p className="font-semibold text-lg mb-2">{review.author}</p>
                     </div>
                   </CardContent>
                 </Card>
