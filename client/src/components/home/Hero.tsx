@@ -17,14 +17,14 @@ const titleVariations = [
 
 export function Hero({ businessName, phone, city, is24_7 }: HeroProps) {
   const randomTitle = titleVariations[Math.floor(Math.random() * titleVariations.length)];
-  const locationText = city ? `in ${city}, Arkansas` : "Professional Plumbing Services";
+  const locationText = city ? ` in ${city}, Arkansas` : "";
 
   return (
     <div className="relative bg-gradient-to-b from-primary/5 to-background min-h-[600px] flex items-center">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-            {randomTitle} {locationText}
+            {randomTitle}{locationText}
           </h1>
           <p className="text-xl text-gray-600 mb-8">
             {businessName} provides expert plumbing solutions for residential and commercial properties.
