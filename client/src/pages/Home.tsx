@@ -41,7 +41,10 @@ export default function Home() {
         is24_7={businessData.basic_info.working_hours?.includes("Open 24 hours")}
       />
       <AboutSection businessName={businessData.basic_info.name} />
-      <ServicesOverview services={businessData.services} />
+      <ServicesOverview 
+        services={businessData.services} 
+        businessName={businessData.basic_info.name} 
+      />
       <ServiceArea 
         businessName={businessData.basic_info.name}
         address={businessData.basic_info.address}
