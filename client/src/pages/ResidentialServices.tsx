@@ -5,7 +5,7 @@ import { ServiceCard } from "@/components/services/ServiceCard";
 import { LoadingSpinner } from "@/components/common/LoadingSpinner";
 import { ContactForm } from "@/components/common/ContactForm";
 import { Button } from "@/components/ui/button";
-import { Phone, Wrench, Tools, Shield, Clock, CheckCircle2 } from "lucide-react";
+import { Phone, Wrench, ShieldCheck, Shield, Clock, CheckCircle2 } from "lucide-react";
 
 export default function ResidentialServices() {
   const siteId = useSiteId();
@@ -28,7 +28,7 @@ export default function ResidentialServices() {
     {
       title: "Repair Services",
       description: "Fast and reliable repair solutions",
-      icon: <Tools className="w-12 h-12 text-primary mb-4" />,
+      icon: <Wrench className="w-12 h-12 text-primary mb-4" />,
       features: [
         "Emergency leak detection & repair",
         "Advanced drain cleaning services",
