@@ -1,11 +1,22 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { processAnalyticsData } from "./analytics";
 
 import fs from 'fs/promises';
 import path from 'path';
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  app.get('/api/analytics/:siteId', async (req, res) => {
+    try {
+      const { siteId } = req.params;
+      const data = await processAnalyticsData(siteId);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to process analytics' });
+    }
+  });
+
   app.post('/api/analytics', async (req, res) => {
     try {
       const analytics = req.body;

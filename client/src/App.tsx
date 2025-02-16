@@ -6,6 +6,7 @@ import Home from "@/pages/Home";
 import ResidentialServices from "@/pages/ResidentialServices";
 import CommercialServices from "@/pages/CommercialServices";
 import NotFound from "@/pages/not-found";
+import { Analytics } from "./pages/Analytics";
 
 function Router() {
   return (
@@ -13,6 +14,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/residential" component={ResidentialServices} />
       <Route path="/commercial" component={CommercialServices} />
+      <Route path="/analytics" element={<Analytics />} />
       <Route component={NotFound} />
     </Switch>
   );
