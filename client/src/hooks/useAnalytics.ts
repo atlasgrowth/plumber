@@ -1,22 +1,47 @@
-import { useEffect } from 'react';
+
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
-import { SessionData, PageView } from '@/types/analytics';
+import { SessionData, PageView, ClickEvent } from '@/types/analytics';
 
 const STORAGE_KEY = 'site_analytics';
 const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes
 
+function getDeviceInfo() {
+  return {
+    browser: navigator.userAgent,
+    os: navigator.platform,
+    screenSize: {
+      width: window.screen.width,
+      height: window.screen.height
+    }
+  };
+}
+
+async function getLocationInfo() {
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    const data = await response.json();
+    return {
+      country: data.country_name,
+      region: data.region
+    };
+  } catch (error) {
+    return { country: 'Unknown', region: 'Unknown' };
+  }
+}
+
 export function useAnalytics(siteId: string | null) {
   const [location] = useLocation();
+  const pageStartTime = useRef(Date.now());
+  const maxScrollRef = useRef(0);
 
   useEffect(() => {
     if (!siteId) return;
 
-    // Load or initialize session data
     const loadSession = (): SessionData => {
       const stored = localStorage.getItem(`${STORAGE_KEY}_${siteId}`);
       if (stored) {
         const session = JSON.parse(stored) as SessionData;
-        // Check if the session has timed out
         if (Date.now() - session.lastActive > SESSION_TIMEOUT) {
           return createNewSession(siteId);
         }
@@ -25,58 +50,75 @@ export function useAnalytics(siteId: string | null) {
       return createNewSession(siteId);
     };
 
-    const createNewSession = (siteId: string): SessionData => ({
-      siteId,
-      startTime: Date.now(),
-      lastActive: Date.now(),
-      pageViews: [],
-    });
+    const createNewSession = async (siteId: string): Promise<SessionData> => {
+      const locationInfo = await getLocationInfo();
+      return {
+        siteId,
+        startTime: Date.now(),
+        lastActive: Date.now(),
+        deviceInfo: getDeviceInfo(),
+        pageViews: [],
+        clicks: [],
+        navigationPath: []
+      };
+    };
 
     const saveSession = (session: SessionData) => {
       localStorage.setItem(`${STORAGE_KEY}_${siteId}`, JSON.stringify(session));
+      // Also save to a file using fetch
+      fetch('/api/analytics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(session)
+      });
     };
 
-    // Track page view
-    const session = loadSession();
-    const pageView: PageView = {
-      path: location,
-      timestamp: Date.now(),
+    const handleScroll = () => {
+      const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+      maxScrollRef.current = Math.max(maxScrollRef.current, scrollPercent);
     };
-    
-    session.pageViews.push(pageView);
-    session.lastActive = Date.now();
+
+    const handleClick = (e: MouseEvent) => {
+      const session = loadSession();
+      const target = e.target as HTMLElement;
+      const clickEvent: ClickEvent = {
+        path: location,
+        timestamp: Date.now(),
+        elementId: target.id || 'unknown',
+        elementText: target.textContent || 'unknown',
+        position: { x: e.clientX, y: e.clientY }
+      };
+      session.clicks.push(clickEvent);
+      saveSession(session);
+    };
+
+    // Track initial page view
+    const session = loadSession();
+    session.navigationPath.push(location);
     saveSession(session);
 
-    // Update last active time periodically
-    const interval = setInterval(() => {
-      const currentSession = loadSession();
-      currentSession.lastActive = Date.now();
-      saveSession(currentSession);
-    }, 60000); // Update every minute
+    // Add event listeners
+    window.addEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClick);
 
-    return () => clearInterval(interval);
-  }, [siteId, location]);
-}
+    // Cleanup function
+    return () => {
+      const timeSpent = Date.now() - pageStartTime.current;
+      const session = loadSession();
+      const pageView: PageView = {
+        path: location,
+        timestamp: pageStartTime.current,
+        timeSpent,
+        scrollDepth: maxScrollRef.current,
+        deviceInfo: getDeviceInfo(),
+        location: { country: 'Unknown', region: 'Unknown' } // Will be updated by API
+      };
+      session.pageViews.push(pageView);
+      session.lastActive = Date.now();
+      saveSession(session);
 
-export function getAnalytics(siteId: string): AnalyticsData {
-  const stored = localStorage.getItem(`${STORAGE_KEY}_${siteId}`);
-  if (!stored) {
-    return {
-      totalVisits: 0,
-      averageSessionDuration: 0,
-      pageViews: {},
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClick);
     };
-  }
-
-  const session = JSON.parse(stored) as SessionData;
-  const pageViews = session.pageViews.reduce((acc, view) => {
-    acc[view.path] = (acc[view.path] || 0) + 1;
-    return acc;
-  }, {} as { [path: string]: number });
-
-  return {
-    totalVisits: 1, // For now, just counting current session
-    averageSessionDuration: (session.lastActive - session.startTime) / 1000, // in seconds
-    pageViews,
-  };
+  }, [siteId, location]);
 }
