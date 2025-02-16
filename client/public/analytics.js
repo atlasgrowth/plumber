@@ -46,7 +46,7 @@ document.addEventListener('click', (e) => {
 
 function sendAnalytics() {
   const duration = Math.floor((Date.now() - sessionData.startTime) / 1000);
-  fetch('https://68b567d0-2dff-4889-a730-3be8bf5583f5-00-2ld48qpl02xwb.worf.replit.dev/api/businesses/' + sessionData.siteId + '/visits', {
+  fetch('https://b5e9c5a4-645b-4f5f-bbe2-d30e51092344-00-1hjojg05okzy0.spock.replit.dev/api/businesses/' + sessionData.siteId + '/visits', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -57,7 +57,7 @@ function sendAnalytics() {
   }).catch(console.error);
 
   // Send analytics data to the correct endpoint that matches backend route
-  fetch(`https://68b567d0-2dff-4889-a730-3be8bf5583f5-00-2ld48qpl02xwb.worf.replit.dev/api/businesses/${sessionData.siteId}/analytics`, {
+  fetch(`https://b5e9c5a4-645b-4f5f-bbe2-d30e51092344-00-1hjojg05okzy0.spock.replit.dev/api/businesses/${sessionData.siteId}/analytics`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(sessionData), // Sending sessionData directly
