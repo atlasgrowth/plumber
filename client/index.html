@@ -91,19 +91,31 @@
       // Send data before page unload
       window.addEventListener('beforeunload', () => {
         // Update final page view data
-        SESSION.pageViews[SESSION.pageViews.length - 1].timeSpent = 
-          Math.round((Date.now() - pageStartTime) / 1000);
-        SESSION.pageViews[SESSION.pageViews.length - 1].scrollDepth = maxScroll;
+        if (SESSION.pageViews.length > 0) {
+          SESSION.pageViews[SESSION.pageViews.length - 1].timeSpent = 
+            Math.round((Date.now() - pageStartTime) / 1000);
+          SESSION.pageViews[SESSION.pageViews.length - 1].scrollDepth = maxScroll;
+        }
 
-        const visitData = new Blob([JSON.stringify({
-          duration: Math.round((Date.now() - SESSION.startTime) / 1000),
-          source: document.referrer || 'direct'
-        })], { type: 'application/json' });
+        const duration = Math.round((Date.now() - SESSION.startTime) / 1000);
+        
+        fetch(`${API_URL}/api/businesses/${siteId}/visits`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            businessId: parseInt(siteId),
+            duration: duration,
+            source: document.referrer || 'direct'
+          }),
+          keepalive: true
+        }).catch(console.error);
 
-        const analyticsData = new Blob([JSON.stringify(SESSION)], { type: 'application/json' });
-
-        navigator.sendBeacon(`${API_URL}/api/businesses/${siteId}/visits`, visitData);
-        navigator.sendBeacon(`${API_URL}/api/businesses/${siteId}/analytics`, analyticsData);
+        fetch(`${API_URL}/api/analytics`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(SESSION),
+          keepalive: true
+        }).catch(console.error);
       });
     }
     </script>
