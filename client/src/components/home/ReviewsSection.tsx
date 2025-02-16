@@ -1,12 +1,13 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 interface Review {
-  author: string;
-  rating: number;
   text: string;
+  reviewer_name: string;
+  date: string;
 }
 
 interface ReviewsSectionProps {
@@ -39,7 +40,7 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
     );
   };
 
-  if (reviews.length === 0) {
+  if (!reviews || reviews.length === 0) {
     return null;
   }
 
@@ -54,7 +55,7 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
                 <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            {reviews.length >= 10 && (
+            {reviews.length > 0 && (
               <p className="text-lg text-gray-600">
                 Based on {reviews.length} reviews
               </p>
@@ -79,7 +80,7 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
             <ChevronRight className="h-8 w-8" />
           </Button>
 
-          <div className="overflow-hidden relative min-h-96">
+          <div className="overflow-hidden relative min-h-[300px]">
             {reviews.map((review, index) => (
               <div
                 key={index}
@@ -90,11 +91,14 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
                 }`}
               >
                 <Card className="bg-white/50 backdrop-blur-sm">
-                  <CardContent className="p-8">
-                    <Quote className="h-8 w-8 text-primary/20 mb-4" />
+                  <CardContent className="p-8 text-center">
+                    <Quote className="h-8 w-8 text-primary/20 mb-4 mx-auto" />
                     <p className="text-lg mb-6">{review.text}</p>
                     <div className="flex flex-col items-center">
-                      <p className="font-semibold text-lg mb-2">{review.author}</p>
+                      <p className="font-semibold text-lg">{review.reviewer_name}</p>
+                      <p className="text-sm text-gray-500">
+                        {new Date(review.date).toLocaleDateString()}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -118,3 +122,5 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
     </div>
   );
 }
+
+export default ReviewsSection;
