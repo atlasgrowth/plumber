@@ -4,7 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { LoadingSpinner } from "@/components/common/LoadingSpinner";
 import { ContactForm } from "@/components/common/ContactForm";
 import { Button } from "@/components/ui/button";
-import { Phone, Wrench, ShieldCheck, Clock, Bath, Droplet, Tool } from "lucide-react";
+import { Phone, Wrench, ShieldCheck, Clock, Bath, Droplet, WrenchScrewdriver } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ResidentialServices() {
@@ -70,7 +70,7 @@ export default function ResidentialServices() {
                   <div className="absolute top-0 left-0 right-0 h-1 bg-blue-500 rounded-t-2xl" />
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-gray-900/50 rounded-2xl p-4 mb-6">
-                      <Tool className="h-12 w-12 text-blue-400" />
+                      <WrenchScrewdriver className="h-12 w-12 text-blue-400" />
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-4">Installation Services</h3>
                     <p className="text-gray-300 mb-6">Expert plumbing installation for all your home needs</p>
