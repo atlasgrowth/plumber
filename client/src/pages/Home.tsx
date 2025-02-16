@@ -56,11 +56,7 @@ export default function Home() {
         longitude={businessData.basic_info.longitude}
         phone={businessData.basic_info.phone}
       />
-      <ReviewsSection reviews={businessData.reviews?.map(review => ({
-        text: review.text,
-        reviewer_name: review.author_name,
-        date: review.time
-      }))} />
+      <ReviewsSection reviews={businessData.five_star_reviews} />
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-xl">
           <h2 className="text-3xl font-bold text-center mb-12">Contact Us</h2>

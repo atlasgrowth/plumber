@@ -13,9 +13,9 @@ export interface BusinessData {
     description: string;
     image_url?: string;
   }[];
-  reviews?: {
-    author: string;
-    rating: number;
+  five_star_reviews?: {
     text: string;
+    reviewer_name: string;
+    date: string;
   }[];
 }
