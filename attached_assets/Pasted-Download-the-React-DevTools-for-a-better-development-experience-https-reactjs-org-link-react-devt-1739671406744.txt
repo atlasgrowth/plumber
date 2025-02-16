@@ -1,0 +1,29 @@
+Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+chunk-WERSD76P.js?v=bf12441a:521 Warning: validateDOMNesting(...): <a> cannot appear as a descendant of <a>.
+    at a
+    at a
+    at https://56a90f0a-2aac-4860-adb8-89d7d9cb02e6-00-bbwhw9k6h8ci.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=bf12441a:337:18
+    at div
+    at div
+    at div
+    at div
+    at footer
+    at Footer
+    at div
+    at Layout (https://56a90f0a-2aac-4860-adb8-89d7d9cb02e6-00-bbwhw9k6h8ci.riker.replit.dev/src/components/layout/Layout.tsx:22:26)
+    at Home (https://56a90f0a-2aac-4860-adb8-89d7d9cb02e6-00-bbwhw9k6h8ci.riker.replit.dev/src/pages/Home.tsx:30:52)
+    at Route (https://56a90f0a-2aac-4860-adb8-89d7d9cb02e6-00-bbwhw9k6h8ci.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=bf12441a:323:16)
+    at Switch (https://56a90f0a-2aac-4860-adb8-89d7d9cb02e6-00-bbwhw9k6h8ci.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=bf12441a:379:17)
+    at Router
+    at QueryClientProvider (https://56a90f0a-2aac-4860-adb8-89d7d9cb02e6-00-bbwhw9k6h8ci.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=bf12441a:2805:3)
+    at App
+printWarning @ chunk-WERSD76P.js?v=bf12441a:521Understand this errorAI
+client:614 [vite] connected.
+js?key=undefined:276 Google Maps JavaScript API has been loaded directly without loading=async. This can result in suboptimal performance. For best-practice loading patterns please see https://goo.gle/js-api-loading
+wga @ js?key=undefined:276Understand this warningAI
+js?key=undefined:199 As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marker will continue to receive bug fixes for any major regressions, existing bugs in google.maps.Marker will not be addressed. At least 12 months notice will be given before support is discontinued. Please see https://developers.google.com/maps/deprecations for additional details and https://developers.google.com/maps/documentation/javascript/advanced-markers/migration for the migration guide.
+(anonymous) @ js?key=undefined:199Understand this warningAI
+js?key=undefined:172 Google Maps JavaScript API error: InvalidKeyMapError
+https://developers.google.com/maps/documentation/javascript/error-messages#invalid-key-map-error
+_.Dj @ js?key=undefined:172Understand this errorAI
+util.js:82 Google Maps JavaScript API warning: InvalidKey https://developers.google.com/maps/documentation/javascript/error-messages#invalid-key
