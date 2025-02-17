@@ -1,0 +1,243 @@
+// server/index.ts
+import express2 from "express";
+
+// server/routes.ts
+import { createServer } from "http";
+
+// server/analytics.ts
+import fs from "fs/promises";
+import path from "path";
+async function processAnalyticsData(siteId) {
+  const files = await fs.readdir(path.join(process.cwd(), "analytics"));
+  const relevantFiles = files.filter((f) => f.startsWith(`analytics_${siteId}_`));
+  const sessions = [];
+  for (const file of relevantFiles) {
+    const content = await fs.readFile(path.join(process.cwd(), "analytics", file), "utf-8");
+    const lines = content.trim().split("\n");
+    sessions.push(...lines.map((line) => JSON.parse(line)));
+  }
+  const uniqueSessions = new Set(sessions.map((s) => s.startTime));
+  const totalVisits = uniqueSessions.size;
+  const pageViews = {};
+  const timeSpentTotal = {};
+  const scrollDepthTotal = {};
+  const pageViewCounts = {};
+  sessions.forEach((session) => {
+    session.pageViews.forEach((view) => {
+      pageViews[view.path] = (pageViews[view.path] || 0) + 1;
+      timeSpentTotal[view.path] = (timeSpentTotal[view.path] || 0) + view.timeSpent;
+      scrollDepthTotal[view.path] = (scrollDepthTotal[view.path] || 0) + view.scrollDepth;
+      pageViewCounts[view.path] = (pageViewCounts[view.path] || 0) + 1;
+    });
+  });
+  const averageTimeSpent = {};
+  const averageScrollDepth = {};
+  Object.keys(pageViews).forEach((path5) => {
+    averageTimeSpent[path5] = timeSpentTotal[path5] / pageViewCounts[path5];
+    averageScrollDepth[path5] = scrollDepthTotal[path5] / pageViewCounts[path5];
+  });
+  const browserStats = {};
+  const screenSizes = {};
+  const countries = {};
+  const regions = {};
+  sessions.forEach((session) => {
+    browserStats[session.deviceInfo.browser] = (browserStats[session.deviceInfo.browser] || 0) + 1;
+    const screenSize = `${session.deviceInfo.screenSize.width}x${session.deviceInfo.screenSize.height}`;
+    screenSizes[screenSize] = (screenSizes[screenSize] || 0) + 1;
+    countries[session.locationInfo.country] = (countries[session.locationInfo.country] || 0) + 1;
+    regions[session.locationInfo.region] = (regions[session.locationInfo.region] || 0) + 1;
+  });
+  return {
+    totalVisits,
+    averageSessionDuration: sessions.reduce((acc, s) => acc + (s.lastActive - s.startTime), 0) / sessions.length,
+    pageViews,
+    averageScrollDepth,
+    averageTimeSpent,
+    popularPaths: Object.entries(pageViews).sort(([, a], [, b]) => b - a).map(([path5]) => path5),
+    deviceStats: {
+      browsers: browserStats,
+      screenSizes
+    },
+    locationStats: {
+      countries,
+      regions
+    }
+  };
+}
+
+// server/routes.ts
+import fs2 from "fs/promises";
+import path2 from "path";
+async function registerRoutes(app2) {
+  app2.get("/api/analytics/:siteId", async (req, res) => {
+    try {
+      const { siteId } = req.params;
+      const data = await processAnalyticsData(siteId);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to process analytics" });
+    }
+  });
+  app2.post("/api/analytics", async (req, res) => {
+    try {
+      const analytics = req.body;
+      const fileName = `analytics_${analytics.siteId}_${(/* @__PURE__ */ new Date()).toISOString().split("T")[0]}.json`;
+      await fs2.appendFile(
+        path2.join(process.cwd(), "analytics", fileName),
+        JSON.stringify(analytics) + "\n"
+      );
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to save analytics" });
+    }
+  });
+  const httpServer = createServer(app2);
+  return httpServer;
+}
+
+// server/vite.ts
+import express from "express";
+import fs3 from "fs";
+import path4, { dirname as dirname2 } from "path";
+import { fileURLToPath as fileURLToPath2 } from "url";
+import { createServer as createViteServer, createLogger } from "vite";
+
+// vite.config.ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
+import path3, { dirname } from "path";
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import { fileURLToPath } from "url";
+var __filename = fileURLToPath(import.meta.url);
+var __dirname = dirname(__filename);
+var vite_config_default = defineConfig({
+  plugins: [react(), runtimeErrorOverlay(), themePlugin()],
+  resolve: {
+    alias: {
+      "@": path3.resolve(__dirname, "client", "src"),
+      "@shared": path3.resolve(__dirname, "shared")
+    }
+  },
+  root: path3.resolve(__dirname, "client"),
+  build: {
+    outDir: path3.resolve(__dirname, "dist/public"),
+    emptyOutDir: true
+  }
+});
+
+// server/vite.ts
+import { nanoid } from "nanoid";
+var __filename2 = fileURLToPath2(import.meta.url);
+var __dirname2 = dirname2(__filename2);
+var viteLogger = createLogger();
+function log(message, source = "express") {
+  const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true
+  });
+  console.log(`${formattedTime} [${source}] ${message}`);
+}
+async function setupVite(app2, server) {
+  const serverOptions = {
+    middlewareMode: true,
+    hmr: { server },
+    allowedHosts: true
+  };
+  const vite = await createViteServer({
+    ...vite_config_default,
+    configFile: false,
+    customLogger: {
+      ...viteLogger,
+      error: (msg, options) => {
+        viteLogger.error(msg, options);
+        process.exit(1);
+      }
+    },
+    server: serverOptions,
+    appType: "custom"
+  });
+  app2.use(vite.middlewares);
+  app2.use("*", async (req, res, next) => {
+    const url = req.originalUrl;
+    try {
+      const clientTemplate = path4.resolve(
+        __dirname2,
+        "..",
+        "client",
+        "index.html"
+      );
+      let template = await fs3.promises.readFile(clientTemplate, "utf-8");
+      template = template.replace(
+        `src="/src/main.tsx"`,
+        `src="/src/main.tsx?v=${nanoid()}"`
+      );
+      const page = await vite.transformIndexHtml(url, template);
+      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+    } catch (e) {
+      vite.ssrFixStacktrace(e);
+      next(e);
+    }
+  });
+}
+function serveStatic(app2) {
+  const distPath = path4.resolve(__dirname2, "public");
+  if (!fs3.existsSync(distPath)) {
+    throw new Error(
+      `Could not find the build directory: ${distPath}, make sure to build the client first`
+    );
+  }
+  app2.use(express.static(distPath));
+  app2.use("*", (_req, res) => {
+    res.sendFile(path4.resolve(distPath, "index.html"));
+  });
+}
+
+// server/index.ts
+var app = express2();
+app.use(express2.json());
+app.use(express2.urlencoded({ extended: false }));
+app.use((req, res, next) => {
+  const start = Date.now();
+  const path5 = req.path;
+  let capturedJsonResponse = void 0;
+  const originalResJson = res.json;
+  res.json = function(bodyJson, ...args) {
+    capturedJsonResponse = bodyJson;
+    return originalResJson.apply(res, [bodyJson, ...args]);
+  };
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    if (path5.startsWith("/api")) {
+      let logLine = `${req.method} ${path5} ${res.statusCode} in ${duration}ms`;
+      if (capturedJsonResponse) {
+        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+      }
+      if (logLine.length > 80) {
+        logLine = logLine.slice(0, 79) + "\u2026";
+      }
+      log(logLine);
+    }
+  });
+  next();
+});
+(async () => {
+  const server = await registerRoutes(app);
+  app.use((err, _req, res, _next) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+    res.status(status).json({ message });
+    throw err;
+  });
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
+  }
+  const PORT = 5e3;
+  server.listen(PORT, "0.0.0.0", () => {
+    log(`serving on port ${PORT}`);
+  });
+})();
