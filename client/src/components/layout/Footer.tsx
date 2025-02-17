@@ -2,13 +2,13 @@ import { Link } from "wouter";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-50 border-t">
+    <footer className="bg-gray-900 border-t border-gray-800">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-bold text-lg mb-4">Quick Links</h3>
-            <div className="flex flex-col gap-2">
-              <Link href="/" className="hover:text-primary transition-colors">
+            <h3 className="font-bold text-lg mb-4 text-white">Quick Links</h3>
+            <div className="flex flex-col gap-2 text-gray-300">
+              <Link href="/" className="hover:text-blue-400 transition-colors">
                 Home
               </Link>
               <Link href="/residential" className="hover:text-primary transition-colors">
