@@ -19,13 +19,13 @@ export function ServicesOverview({ services = [], businessName = "" }: ServicesO
     {
       title: "Residential Services",
       description: `Trust ${businessName} for all your home plumbing needs. From quick repairs to complete installations, our expert team delivers reliable solutions that keep your household running smoothly.`,
-      image: "https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?auto=format&fit=crop&q=80&w=600",
+      image: "https://www.buildingmaterialreporter.com/uploads/blogs/files/01%20(3)(5).jpg",
       link: "/residential"
     },
     {
       title: "Commercial Services",
       description: `${businessName} provides comprehensive commercial plumbing solutions that keep your business operating at peak efficiency. Our experienced team understands the unique challenges of commercial plumbing systems.`,
-      image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=600",
+      image: "https://www.pmmag.com/ext/resources/Issues/2024/08-August/Columns/PM-0824-Codes-Corner-column-GettyImages-1722486042.jpg?1723468264",
       link: "/commercial"
     },
     {
