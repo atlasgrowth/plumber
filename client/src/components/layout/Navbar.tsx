@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -11,6 +11,7 @@ import { preserveQueryParams } from "@/lib/utils";
 
 interface NavbarProps {
   businessName?: string;
+  phone?: string;
 }
 
 export function Navbar({ businessName = "Plumbing Services" }: NavbarProps) {
@@ -40,7 +41,12 @@ export function Navbar({ businessName = "Plumbing Services" }: NavbarProps) {
               {item.label}
             </Link>
           ))}
-          <Button>Contact Us</Button>
+          <Button asChild>
+            <a href={`tel:${phone}`} className="flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              {phone || "Contact Us"}
+            </a>
+          </Button>
         </div>
 
         {/* Mobile Navigation */}
