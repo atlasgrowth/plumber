@@ -15,7 +15,10 @@ export function Layout({ children, businessData }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar businessName={businessData?.basic_info.name} />
+      <Navbar 
+        businessName={businessData?.basic_info.name}
+        phone={businessData?.basic_info.phone}
+      />
       <main className="flex-grow pt-16">{children}</main>
       <Footer />
     </div>
