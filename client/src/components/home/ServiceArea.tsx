@@ -20,10 +20,7 @@ export function ServiceArea({
 }: ServiceAreaProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   
-  useEffect(() => {
-    // Load Google Maps
-    const loadMap = () => {
-      if (window.google && mapRef.current) {
+  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=11&size=800x400&markers=color:red%7C${latitude},${longitude}&key=${import.meta.env.VITE_GOOGLE_API_KEY}`;
         const map = new google.maps.Map(mapRef.current, {
           center: { lat: latitude, lng: longitude },
           zoom: 10,
@@ -134,7 +131,13 @@ export function ServiceArea({
             </Card>
           </div>
 
-          <div ref={mapRef} className="aspect-square md:aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg min-h-[400px]" />
+          <div className="aspect-square md:aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg min-h-[400px]">
+            <img 
+              src={staticMapUrl} 
+              alt="Service Area Map"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -39,11 +39,11 @@ export function Hero({ businessName, phone, city, is24_7 }: HeroProps) {
             {is24_7 && " Available 24/7 for emergencies."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" asChild>
+            <Button size="lg" variant="secondary" asChild>
               <Link href="/residential">View Services</Link>
             </Button>
             {phone && (
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="primary" className="bg-blue-600 hover:bg-blue-700" asChild>
                 <a href={`tel:${phone}`}>Call Now: {phone}</a>
               </Button>
             )}

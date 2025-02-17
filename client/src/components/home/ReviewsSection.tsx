@@ -39,7 +39,10 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
   }
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-gray-900">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-white">What Our Customers Say</h2>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-6">What Our Customers Say</h2>
@@ -98,6 +101,21 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
               </div>
             ))}
           </div>
+        </div>
+        <div className="text-center mt-8">
+          <Button 
+            size="lg" 
+            variant="secondary"
+            className="bg-blue-600 hover:bg-blue-700 text-white"
+            asChild
+          >
+            <a href={`https://www.google.com/maps/place/?q=place_id=${businessData?.place_id}`} 
+               target="_blank" 
+               rel="noopener noreferrer"
+            >
+              Read More Reviews
+            </a>
+          </Button>
         </div>
       </div>
     </section>

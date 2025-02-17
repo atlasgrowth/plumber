@@ -7,7 +7,7 @@ interface AboutSectionProps {
 
 export function AboutSection({ businessName, phone, city }: AboutSectionProps & { phone?: string, city?: string }) {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="w-full md:w-1/2">
