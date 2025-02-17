@@ -23,7 +23,7 @@ export function Hero({ businessName, phone, city, is24_7 }: HeroProps) {
     <div 
       className="relative min-h-[600px] flex items-center"
       style={{
-        backgroundImage: 'url("https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80")',
+        backgroundImage: 'url("https://assets.cdn.filesafe.space/A9rd4HdLD0sTvRuuQFZl/media/651501775cf2e93f16638cf9.jpeg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}

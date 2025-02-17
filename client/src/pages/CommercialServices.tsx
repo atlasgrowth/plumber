@@ -31,7 +31,7 @@ export default function CommercialServices() {
       <div 
         className="relative py-20 bg-cover bg-center"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80")',
+          backgroundImage: 'url("https://www.brewercommercialservices.com/wp-content/uploads/2022/01/DSC03144.jpg")',
         }}
       >
         <div className="absolute inset-0 bg-black/60" />

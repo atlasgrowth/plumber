@@ -12,7 +12,7 @@ export function AboutSection({ businessName, phone, city }: AboutSectionProps & 
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="w-full md:w-1/2">
             <img 
-              src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=600" 
+              src="https://assets.cdn.filesafe.space/2CUu2UzbKL9UUAOvmqJR/media/98146f6b-66e2-4f7a-aed2-59f7a9c8fce4.jpeg" 
               alt="About Us"
               className="rounded-lg shadow-lg w-full object-cover aspect-video"
             />

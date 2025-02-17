@@ -95,7 +95,7 @@ export default function ResidentialServices() {
         <div 
           className="relative py-32 bg-cover bg-center"
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80")',
+            backgroundImage: 'url("https://www.aperfectplumber.com/wp-content/uploads/2023/08/Main-Stack-with-Ejector-Pit-Tie-In.jpg")',
             backgroundBlendMode: 'overlay',
             backgroundColor: 'rgba(0, 0, 0, 0.7)'
           }}
