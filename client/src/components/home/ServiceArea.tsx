@@ -1,4 +1,6 @@
-import { MapPin } from "lucide-react";
+
+import { Phone } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface ServiceAreaProps {
   businessName: string;
@@ -9,25 +11,27 @@ interface ServiceAreaProps {
 }
 
 export function ServiceArea({ 
-  businessName, 
-  address,
-  latitude = 35.20105, 
-  longitude = -92.38043,
+  businessName,
+  phone,
 }: ServiceAreaProps) {
-  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=11&size=800x400&markers=color:red%7C${latitude},${longitude}&key=AIzaSyBopOp_cVJCHyJGNdAJD7GDVbpbJpAYhfE`;
-
   return (
     <section className="py-16 bg-gray-900">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-white">
-          Service Area
+          Contact Us
         </h2>
-        <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
-          <img 
-            src={staticMapUrl} 
-            alt="Service Area Map"
-            className="w-full h-full object-cover"
-          />
+        <div className="text-center">
+          {phone && (
+            <Button size="lg" variant="primary" className="bg-blue-600 hover:bg-blue-700 text-xl font-bold mb-4" asChild>
+              <a href={`tel:${phone}`}>
+                <Phone className="mr-2 h-5 w-5" />
+                Call Now: {phone}
+              </a>
+            </Button>
+          )}
+          <p className="text-white mt-4">
+            Serving your local area with 24/7 emergency plumbing services
+          </p>
         </div>
       </div>
     </section>
