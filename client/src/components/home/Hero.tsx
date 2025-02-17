@@ -31,10 +31,10 @@ export function Hero({ businessName, phone, city, is24_7 }: HeroProps) {
       <div className="absolute inset-0 bg-black/50" />
       <div className="container mx-auto px-4">
         <div className="max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white relative z-10">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white relative z-10 text-shadow">
             {randomTitle}{locationText}
           </h1>
-          <p className="text-xl text-gray-200 mb-8 relative z-10">
+          <p className="text-xl text-white mb-8 relative z-10 text-shadow">
             {businessName} provides expert plumbing solutions for residential and commercial properties.
             {is24_7 && " Available 24/7 for emergencies."}
           </p>
