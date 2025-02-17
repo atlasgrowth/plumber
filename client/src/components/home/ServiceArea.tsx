@@ -21,9 +21,6 @@ export function ServiceArea({
   const mapRef = useRef<HTMLDivElement>(null);
   
   const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=11&size=800x400&markers=color:red%7C${latitude},${longitude}&key=${import.meta.env.VITE_GOOGLE_API_KEY}`;
-        const map = new google.maps.Map(mapRef.current, {
-          center: { lat: latitude, lng: longitude },
-          zoom: 10,
           styles: [
             {
               featureType: "water",

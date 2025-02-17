@@ -43,9 +43,6 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-6 text-white">What Our Customers Say</h2>
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-6">What Our Customers Say</h2>
           <div className="flex justify-center items-center gap-1 mb-4">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
