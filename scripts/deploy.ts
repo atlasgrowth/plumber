@@ -9,7 +9,7 @@ if (!token) {
 }
 
 const octokit = new Octokit({ auth: token });
-const repoName = "plumbingtemplate1";
+const repoName = "plumbingwebsite";
 
 async function deploy() {
   try {
