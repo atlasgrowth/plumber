@@ -14,7 +14,7 @@ export function ServiceArea({
   latitude = 35.20105, 
   longitude = -92.38043,
 }: ServiceAreaProps) {
-  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=11&size=800x400&markers=color:red%7C${latitude},${longitude}&key=${import.meta.env.VITE_GOOGLE_API_KEY}`;
+  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=11&size=800x400&markers=color:red%7C${latitude},${longitude}&key=AIzaSyBopOp_cVJCHyJGNdAJD7GDVbpbJpAYhfE`;
 
   return (
     <section className="py-16 bg-gray-900">

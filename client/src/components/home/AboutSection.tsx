@@ -19,7 +19,7 @@ export function AboutSection({ businessName, phone, city }: AboutSectionProps & 
           </div>
           <div className="w-full md:w-1/2">
             <h2 className="text-3xl font-bold mb-6">About {businessName}</h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-white mb-6">
               With years of experience serving {city || 'the local community'}, {businessName} is your trusted partner for all plumbing needs. We pride ourselves on delivering exceptional service with a focus on quality, reliability, and customer satisfaction.
             </p>
             <div className="space-y-4">

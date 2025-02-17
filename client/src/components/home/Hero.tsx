@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -43,7 +42,7 @@ export function Hero({ businessName, phone, city, is24_7 }: HeroProps) {
               <Link href="/residential">View Services</Link>
             </Button>
             {phone && (
-              <Button size="lg" variant="primary" className="bg-blue-600 hover:bg-blue-700" asChild>
+              <Button size="lg" variant="primary" className="bg-blue-600 hover:bg-blue-700 text-xl font-bold" asChild>
                 <a href={`tel:${phone}`}>Call Now: {phone}</a>
               </Button>
             )}
