@@ -1,0 +1,251 @@
+{
+  "ids": {
+    "site_id": "1stcallplumbing",
+    "place_id": "ChIJ6zFoxcp9tSIR9Ibz-IG-wQg",
+    "google_id": "0x22b57dcac56831eb:0x8c1be81f8f386f4",
+    "owner_id": 110240884235061377202
+  },
+  "basic_info": {
+    "name": "1st Call Plumbing",
+    "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJ6zFoxcp9tSIR9Ibz-IG-wQg&q=plumber,+72412,+Beech+Grove,+AR,+US&authuser=0&hl=en&gl=US",
+    "phone": "+1 870-919-3036",
+    "query": "plumber, 72412, Beech Grove, AR, US",
+    "name_for_emails": "1St Call Plumbing",
+    "site": "",
+    "subtypes": "Plumber, Service establishment",
+    "category": "Plumber",
+    "type": "Plumber",
+    "phone.phones_enricher.carrier_type": "mobile",
+    "phone.phones_enricher.carrier_name": "CELLCO PARTNERSHIP DBA VERIZON WIRELESS - AR",
+    "full_address": "",
+    "borough": "",
+    "street": "",
+    "city": "",
+    "postal_code": "",
+    "state": "",
+    "us_state": "",
+    "country": "",
+    "country_code": "",
+    "latitude": 35.98398,
+    "longitude": -90.6135896,
+    "h3": "89265d78593ffff",
+    "time_zone": "America/Chicago",
+    "plus_code": "",
+    "area_service": "TRUE",
+    "rating": 5,
+    "reviews": 8,
+    "reviews_tags": "",
+    "reviews_per_score": "",
+    "photos_count": 4,
+    "photo": "https://lh5.googleusercontent.com/p/AF1QipNh-rbp7B8lyYiIaAUivK1sXO-39MfSyNKPWm31=w800-h500-k-no",
+    "street_view": "https://lh5.googleusercontent.com/p/AF1QipNh-rbp7B8lyYiIaAUivK1sXO-39MfSyNKPWm31=w1600-h1000-k-no",
+    "located_in": "",
+    "working_hours": "{\"Monday\": \"Open 24 hours\", \"Tuesday\": \"Open 24 hours\", \"Wednesday\": \"Open 24 hours\", \"Thursday\": \"Open 24 hours\", \"Friday\": \"Open 24 hours\", \"Saturday\": \"Open 24 hours\", \"Sunday\": \"Open 24 hours\"}",
+    "working_hours_old_format": "Monday:Open 24 hours|Tuesday:Open 24 hours|Wednesday:Open 24 hours|Thursday:Open 24 hours|Friday:Open 24 hours|Saturday:Open 24 hours|Sunday:Open 24 hours",
+    "other_hours": "",
+    "popular_times": "",
+    "business_status": "OPERATIONAL",
+    "about": "{}",
+    "range": "",
+    "posts": "",
+    "logo": "https://lh4.googleusercontent.com/-JjT1rfPcgHc/AAAAAAAAAAI/AAAAAAAAAAA/RmQPseoMFSM/s44-p-k-no-ns-nd/photo.jpg",
+    "description": "",
+    "typical_time_spent": "",
+    "verified": "TRUE",
+    "owner_id": 110240884235061377202,
+    "owner_title": "1st Call Plumbing",
+    "owner_link": "https://www.google.com/maps/contrib/110240884235061377202",
+    "reservation_links": "",
+    "booking_appointment_link": "",
+    "menu_link": "",
+    "order_links": "",
+    "location_link": "https://www.google.com/maps/place/1st+Call+Plumbing/@35.983979999999995,-90.6135896,14z/data=!4m8!1m2!2m1!1s1st+Call+Plumbing!3m4!1s0x22b57dcac56831eb:0x8c1be81f8f386f4!8m2!3d35.983979999999995!4d-90.6135896",
+    "location_reviews_link": "https://www.google.com/maps/place/1st+Call+Plumbing/@35.983979999999995,-90.6135896,13.99z/data=!4m16!1m7!3m6!1s0x22b57dcac56831eb:0x8c1be81f8f386f4!2s1st+Call+Plumbing!8m2!3d35.983979999999995!4d-90.6135896!16s%2Fg%2F11ckvg1dmb!3m7!1s0x22b57dcac56831eb:0x8c1be81f8f386f4!8m2!3d35.983979999999995!4d-90.6135896!9m1!1b1!16s%2Fg%2F11ckvg1dmb?entry=ttu",
+    "place_id": "ChIJ6zFoxcp9tSIR9Ibz-IG-wQg",
+    "google_id": "0x22b57dcac56831eb:0x8c1be81f8f386f4",
+    "cid": 630994888245348084,
+    "reviews_id": 630994888245348084,
+    "located_google_id": "",
+    "email_1": "",
+    "email_1.emails_validator.status": "",
+    "email_1.emails_validator.status_details": "",
+    "email_1_full_name": "",
+    "email_1_first_name": "",
+    "email_1_last_name": "",
+    "email_1_title": "",
+    "email_1_phone": "",
+    "email_2": "",
+    "email_2.emails_validator.status": "",
+    "email_2.emails_validator.status_details": "",
+    "email_2_full_name": "",
+    "email_2_first_name": "",
+    "email_2_last_name": "",
+    "email_2_title": "",
+    "email_2_phone": "",
+    "email_3": "",
+    "email_3.emails_validator.status": "",
+    "email_3.emails_validator.status_details": "",
+    "email_3_full_name": "",
+    "email_3_first_name": "",
+    "email_3_last_name": "",
+    "email_3_title": "",
+    "email_3_phone": "",
+    "phone_1": "",
+    "phone_1.phones_enricher.carrier_type": "",
+    "phone_1.phones_enricher.carrier_name": "",
+    "phone_2": "",
+    "phone_3": "",
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "tiktok": "",
+    "medium": "",
+    "reddit": "",
+    "skype": "",
+    "snapchat": "",
+    "telegram": "",
+    "whatsapp": "",
+    "twitter": "",
+    "vimeo": "",
+    "youtube": "",
+    "github": "",
+    "crunchbase": "",
+    "website_title": "",
+    "website_generator": "",
+    "website_description": "",
+    "website_keywords": "",
+    "website_has_fb_pixel": "",
+    "website_has_google_tag": ""
+  },
+  "review_trends": {
+    "monthly_reviews": {
+      "2024-05": 5.0,
+      "2024-06": 1.0,
+      "2024-07": 1.0,
+      "2024-10": 1.0,
+      "2024-11": 3.0,
+      "2024-12": 6.0,
+      "2025-01": 3.0,
+      "2025-02": 2.0
+    },
+    "yearly_totals": {},
+    "total_reviews": 8,
+    "owner_responses": 0
+  },
+  "scores": {
+    "photo_score": 0,
+    "facebook_score": 0
+  },
+  "five_star_reviews": [
+    {
+      "text": "Doug was absolutely fantastic. Great service and fixed our water leak & issue in no time! 10/10 recommend!",
+      "reviewer_name": "Christen Taylor",
+      "date": "2025-02-10T21:22:44.830Z"
+    },
+    {
+      "text": "I highly recommend Doug and 1st call plumbing!! He is very dependable, professional, hardworking, and personable!!! I am thrilled to find a plumber that I can depend on! I will definitely use him again in the future!!",
+      "reviewer_name": "courtney burton",
+      "date": "2025-02-06T16:04:26.215Z"
+    },
+    {
+      "text": "Doug has been my plumber for a few years now. He is very pleasant to work with. Everytime he has been here to work he has done an amazing job. I recommend him for all your plumbing needs. His pricing is very competitive and his work is very neat and complete.  We highly recommend 1st Call Plumbing.",
+      "reviewer_name": "Rhonda W",
+      "date": "2025-01-15T20:46:02.453Z"
+    },
+    {
+      "text": "Great service!!",
+      "reviewer_name": "Billie Jean Williams",
+      "date": "2025-01-09T05:56:07.679Z"
+    },
+    {
+      "text": "Doug was very easy to work with. We had a    problem with our water under a concrete slab. We dug it out, he fixed the problem, and he stayed until we got it back together to ensure that everything was okay. He was efficient, effective, and very reasonably priced! We will continue to use him if any other needs arise!",
+      "reviewer_name": "Diana Wells",
+      "date": "2025-01-04T18:52:43.180Z"
+    },
+    {
+      "text": "1st Call Plumbing was very professional when I had plumbing problems.. 1st Call Plumbing diagnosed and fixed the problem in a very timely manner  and done the job for a lot less than anyone else I contacted.. AAAAA+++++++ 1st Call Plumbing is the only Plumbing Service I will use in the future..",
+      "reviewer_name": "Denton Johnston",
+      "date": "2024-12-29T17:59:20.821Z"
+    },
+    {
+      "text": "Showed up when he said he was going to, worked fast, efficient , explained my issues and had them fixed with preventative ideas and more than enough information to help my home. Me and my family have working toilets again and that\u2019s a thank you I cannot express\n\nFirst call everytime !!",
+      "reviewer_name": "Evan Wilson",
+      "date": "2024-12-29T17:21:01.688Z"
+    },
+    {
+      "text": "Excellent work, timely, honest, and reliable!!  I would recommend 1st Call Plumbing, without any hesitation!!!",
+      "reviewer_name": "Shannon Norris",
+      "date": "2024-12-26T18:07:01.699Z"
+    },
+    {
+      "text": "Had a plumbing issue on a Sunday and Doug arrived within 30 minutes to help! Very knowledgable and even took time to explain to us what was going on and how to prevent issues in the future.. Got us back up and running in no time. Will definitely be using him going forward!",
+      "reviewer_name": "Caleb Reinhart",
+      "date": "2024-12-15T23:48:02.055Z"
+    },
+    {
+      "text": "This was my first time using this company and I am beyond impressed. The job was done in a timely and affordable fashion and on a Saturday!! I was given all the facts about the job at hand and some issues to keep an eye on. I really appreciated the transparency. I will definitely be making 1st call my first call for all my plumbing needs!! Thank you so much!!",
+      "reviewer_name": "Ronisha \u201cNiki\u201d Baker",
+      "date": "2024-12-08T01:41:16.303Z"
+    },
+    {
+      "text": "Amazing service, came quicker than expected, and very friendly. Cleaned up job area very well too!  highly recommend!",
+      "reviewer_name": "Adrian Rodriguez",
+      "date": "2024-12-03T20:52:04.053Z"
+    },
+    {
+      "text": "Quick service and got the job done early. We were selling and had some pluming issues to be resolved. Doug got right on the call and made sure issues were resolved same day. Can\u2019t say enough great things about 1st Call!!",
+      "reviewer_name": "Jennifer Barker",
+      "date": "2024-11-30T19:42:15.815Z"
+    },
+    {
+      "text": "I have used Doug for several years for my plumbing needs and such an honest, hardworking guy. He knows his stuff well and it reflects in his organization while working and the respect he shows his client's homes. I highly recommend him to anyone needing this kind of service! I can not say enough good!",
+      "reviewer_name": "Mary Thomas",
+      "date": "2024-11-30T17:09:18.872Z"
+    },
+    {
+      "text": "I called 1st Call Plumbing at 8pm on a Friday evening with a plumbing emergency (when my washing machine spun, water would pour out from under my toilet and flood the bathroom) Doug answered immediately and he was here within 30 minutes (I\u2019m in Paragould and he was in Jonesboro) This was not an easy job due to the location of the clean outs (which weren\u2019t even on this property) but Doug worked tirelessly in the dark to get to the bottom of this rental property\u2019s plumbing issue. He located the clean outs hundreds of feet from the house and got it cleaned out. He was very professional, knowledgeable, cleaned up after himself, and was thorough in his work. I highly recommend him for any and all of your plumbing needs in northeast Arkansas. I can\u2019t express how grateful I am for his help!",
+      "reviewer_name": "Jennifer Calvert ND",
+      "date": "2024-11-23T05:22:05.771Z"
+    },
+    {
+      "text": "Fast response and Great service.  Always willing to help.  Always friendly",
+      "reviewer_name": "Christie York",
+      "date": "2024-10-16T00:20:47.548Z"
+    },
+    {
+      "text": "I was so grateful to run up on this listing on an early Saturday morning after waiting all week for several plumbers to return my phone call or show up one call in and he called me right back and pulled up and resolved my issues with no problems great work ethic and loving personalities from him and his wife thru the phone will recommend him and continue to use his services DOUG IS THE GREATEST",
+      "reviewer_name": "Tahnee Anderson",
+      "date": "2024-07-13T15:39:50.423Z"
+    },
+    {
+      "text": "Could not be happier with 1st call. They go above and beyond to help me when needed no matter what time of day or week. My highest possible recommendation.",
+      "reviewer_name": "Keith Chitmon",
+      "date": "2024-06-17T02:29:24.486Z"
+    },
+    {
+      "text": "The owner, Doug was quick to respond and came out the same day. He went right to work but did not mind answering all of my questions! You won\u2019t go wrong calling 1st call \u260e\ufe0f",
+      "reviewer_name": "A B",
+      "date": "2024-05-30T21:36:22.344Z"
+    },
+    {
+      "text": "Doug Parks with 1st Call Plumbing is great!  A true professional, very knowlegeable and reliable!",
+      "reviewer_name": "peggy jeffries",
+      "date": "2024-05-22T21:33:07.906Z"
+    },
+    {
+      "text": "Doug is awesome! I'm an engineer and do-it-yourselfer and he spent a lot of time answering my questions.  He is intelligent and does great work.  I really appreciate a professional taking the time to explain things.  Time is money, but he makes the customer feel worth his time.  I will definitely continue to use him for all my plumbing needs.  I can't recommend him highly enough!",
+      "reviewer_name": "Josh Little",
+      "date": "2024-05-17T14:01:26.920Z"
+    },
+    {
+      "text": "Great work, fast and very trustworthy! I\u2019ve recommended him to multiple people, and he\u2019s great with working with you on any project! Don\u2019t waste your money on others. Go with Doug!",
+      "reviewer_name": "Colby George",
+      "date": "2024-05-16T18:36:14.162Z"
+    },
+    {
+      "text": "Doug is the Best! I have been using Doug for a little over a year now and he has basically done it all for me. Water heaters, toilet issues, sink issues and emergency leaks that had to be addressed immediately! Doug is very responsive, hard worker, friendly, a fast and high quality plumber!",
+      "reviewer_name": "john meads",
+      "date": "2024-05-15T21:47:06.396Z"
+    }
+  ]
+}
