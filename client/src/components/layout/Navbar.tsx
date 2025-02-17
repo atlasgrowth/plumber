@@ -14,7 +14,7 @@ interface NavbarProps {
   phone?: string;
 }
 
-export function Navbar({ businessName = "Plumbing Services" }: NavbarProps) {
+export function Navbar({ businessName = "Plumbing Services", phone }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -68,7 +68,12 @@ export function Navbar({ businessName = "Plumbing Services" }: NavbarProps) {
                   {item.label}
                 </Link>
               ))}
-              <Button className="w-full">Contact Us</Button>
+              <Button className="w-full" asChild>
+                <a href={phone ? `tel:${phone}` : "#"}>
+                  <Phone className="h-4 w-4 mr-2" />
+                  {phone || "Contact Us"}
+                </a>
+              </Button>
             </div>
           </SheetContent>
         </Sheet>
