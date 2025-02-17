@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useBusinessData, useSiteId } from "@/hooks/useBusinessData";
 
 interface Review {
   text: string;
@@ -16,6 +17,8 @@ interface ReviewsSectionProps {
 
 export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const siteId = useSiteId();
+  const { data: businessData } = useBusinessData(siteId);
 
   const nextReview = () => {
     setCurrentIndex((prevIndex) => 
@@ -48,7 +51,7 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
               <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
             ))}
           </div>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-400">
             Based on {reviews.length} reviews
           </p>
         </div>
@@ -57,7 +60,7 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-white"
             onClick={prevReview}
           >
             <ChevronLeft className="h-8 w-8" />
@@ -66,7 +69,7 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-white"
             onClick={nextReview}
           >
             <ChevronRight className="h-8 w-8" />
@@ -83,13 +86,13 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
                   transform: `translateX(${(index - currentIndex) * 100}%)`
                 }}
               >
-                <Card className="bg-white/50 backdrop-blur-sm">
+                <Card className="bg-white/10 backdrop-blur-sm">
                   <CardContent className="p-8 text-center">
-                    <Quote className="h-8 w-8 text-primary/20 mb-4 mx-auto" />
-                    <p className="text-lg mb-6">{review.text}</p>
+                    <Quote className="h-8 w-8 text-blue-400 mb-4 mx-auto" />
+                    <p className="text-lg mb-6 text-white">{review.text}</p>
                     <div className="flex flex-col items-center">
-                      <p className="font-semibold text-lg">{review.reviewer_name}</p>
-                      <p className="text-sm text-gray-500">
+                      <p className="font-semibold text-lg text-white">{review.reviewer_name}</p>
+                      <p className="text-sm text-gray-400">
                         {new Date(review.date).toLocaleDateString()}
                       </p>
                     </div>
@@ -102,7 +105,6 @@ export function ReviewsSection({ reviews = [] }: ReviewsSectionProps) {
         <div className="text-center mt-8">
           <Button 
             size="lg" 
-            variant="secondary"
             className="bg-blue-600 hover:bg-blue-700 text-white"
             asChild
           >
