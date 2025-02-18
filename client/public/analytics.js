@@ -23,7 +23,7 @@ function recordPageView() {
   const scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
   const currentTime = Date.now();
   const timeSpent = currentTime - sessionData.lastActive;
-  
+
   sessionData.pageViews.push({
     path: window.location.pathname,
     timestamp: currentTime,
@@ -32,7 +32,7 @@ function recordPageView() {
     deviceInfo: sessionData.deviceInfo,
     location: sessionData.locationInfo || { country: '', region: '' }
   });
-  
+
   sessionData.lastActive = currentTime;
 }
 
@@ -54,7 +54,7 @@ document.addEventListener('click', (e) => {
 
 function sendAnalytics() {
   const duration = Math.floor((Date.now() - sessionData.startTime) / 1000);
-  fetch('https://5a5578e4-c172-4fe3-81a5-b646daabb87f-00-mv6rnxv9rfxn.worf.replit.dev/api/businesses/' + sessionData.siteId + '/visits', {
+  fetch('https://58c346ae-af77-4e55-ba41-9155581eab85-00-145ia2zqoi1tq.picard.replit.dev/api/businesses/' + sessionData.siteId + '/visits', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -65,7 +65,7 @@ function sendAnalytics() {
   }).catch(console.error);
 
   // Send analytics data to the correct endpoint that matches backend route
-  fetch(`https://5a5578e4-c172-4fe3-81a5-b646daabb87f-00-mv6rnxv9rfxn.worf.replit.dev/api/businesses/${sessionData.siteId}/analytics`, {
+  fetch(`https://58c346ae-af77-4e55-ba41-9155581eab85-00-145ia2zqoi1tq.picard.replit.dev/api/businesses/${sessionData.siteId}/analytics`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(sessionData), // Sending sessionData directly
