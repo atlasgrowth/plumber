@@ -54,7 +54,7 @@ document.addEventListener('click', (e) => {
 
 function sendAnalytics() {
   const duration = Math.floor((Date.now() - sessionData.startTime) / 1000);
-  fetch('https://58c346ae-af77-4e55-ba41-9155581eab85-00-145ia2zqoi1tq.picard.replit.dev/api/businesses/' + sessionData.siteId + '/visits', {
+  fetch('https://46857e9e-2406-40c3-bca9-f7362a2cb1ca-00-pqda8yfb8d82.riker.replit.dev/api/businesses/' + sessionData.siteId + '/visits', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
