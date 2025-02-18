@@ -7,7 +7,22 @@ async function deploy() {
     // Build the site
     execSync("npm run build", { stdio: "inherit" });
 
-    // Create and checkout gh-pages branch
+    // Initialize git if not already initialized
+    execSync("git init", { stdio: "inherit" });
+
+    // Configure git
+    execSync("git config user.name 'Deployment Bot'", { stdio: "inherit" });
+    execSync("git config user.email 'deploy@example.com'", { stdio: "inherit" });
+
+    // Add GitHub repository as remote
+    try {
+      execSync("git remote remove origin", { stdio: "inherit" });
+    } catch (e) {
+      // Ignore error if remote doesn't exist
+    }
+    execSync("git remote add origin https://github.com/yourusername/plumbernearme.git", { stdio: "inherit" });
+
+    // Create and switch to gh-pages branch
     try {
       execSync("git checkout -b gh-pages", { stdio: "inherit" });
     } catch (e) {
@@ -51,9 +66,15 @@ async function deploy() {
       copyRecursive(src, dest);
     });
 
-    // Commit and push the build files
+    // Stage and commit changes
     execSync("git add .", { stdio: "inherit" });
-    execSync('git commit -m "Deploy to GitHub Pages"', { stdio: "inherit" });
+    try {
+      execSync('git commit -m "Deploy to GitHub Pages"', { stdio: "inherit" });
+    } catch (e) {
+      console.log('No changes to commit, continuing deployment...');
+    }
+
+    // Push to GitHub
     execSync("git push -u origin gh-pages --force", { stdio: "inherit" });
 
     // Switch back to main branch
