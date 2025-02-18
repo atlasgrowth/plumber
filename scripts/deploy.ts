@@ -40,7 +40,13 @@ async function deploy() {
     // Initialize git and push code
     execSync("git init", { stdio: "inherit" });
     execSync("git add .", { stdio: "inherit" });
-    execSync('git commit -m "Initial commit"', { stdio: "inherit" });
+    
+    // Try to commit changes
+    try {
+      execSync('git commit -m "Deploy updates"', { stdio: "inherit" });
+    } catch (error) {
+      console.log('No changes to commit, continuing with deployment...');
+    }
 
     // Remove existing remote if it exists
     try {
